@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="geo.001">地理资料库 · 晚明海上贸易世界观</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a data-i18n="geo.002" href="../index.html" style="display:inline-block;margin:12px 16px 0;font-size:14px;color:#b3842f;text-decoration:none;font-weight:600;">← 返回帆船游戏主站（Sailing）</a>
+    <header class="topbar">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <p data-i18n="geo.003" class="eyebrow">1571-1644 · 地理资料库</p>
+          <h1 data-i18n="geo.004">港口、城市与货品</h1>
+        </div>
+      </a>
+      <nav class="nav" aria-label="页面章节">
+        <a data-i18n="geo.005" href="./index.html">世界观首页</a>
+        <a data-i18n="geo.006" href="./routes.html">航线网络</a>
+        <a data-i18n="geo.007" href="./ships.html">中式帆船</a>
+        <a data-i18n="geo.008" href="./gameplay.html">玩法设计</a>
+        <a data-i18n="geo.009" href="#ports">港口</a>
+        <a data-i18n="geo.010" href="#cities">城市</a>
+        <a data-i18n="geo.011" href="#goods">货品</a>
+        <a data-i18n="geo.012" href="#routes-decision">航线页决策</a>
+            <div class="lang-switcher">
+        <button type="button" class="lang-switch active" data-lang="zh">中</button>
+        <button type="button" class="lang-switch" data-lang="en">EN</button>
+      </div>
+    </nav>
+    </header>
+
+    <main>
+      <section class="subpage-hero">
+        <div class="subpage-title">
+          <p data-i18n="geo.013" class="kicker">资料结构</p>
+          <h2 data-i18n="geo.014">先把世界拆成可游玩的节点，再决定哪些节点需要航线系统。</h2>
+          <p data-i18n="geo.015">
+            本页用于沉淀地理信息。每个地点先记录它在晚明海贸中的功能、主要货品、控制者或关键社群，以及可转化为游戏机制的判断。资料与判断分开标注，避免把设计推论误写成史实。
+          </p>
+        </div>
+        <div class="subpage-panel">
+          <h3 data-i18n="geo.016">当前收录范围</h3>
+          <ul>
+            <li data-i18n="geo.017">中国东南沿海：月港、澳门、广州、泉州/漳州贸易圈</li>
+            <li data-i18n="geo.018">太平洋链条：马尼拉、Cavite、阿卡普尔科</li>
+            <li data-i18n="geo.019">印度洋与东南亚：马六甲、果阿、巴达维亚</li>
+            <li data-i18n="geo.020">货品：白银、丝绸、瓷器、香料、日本银铜、东南亚物产</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ports" class="section-band">
+        <div class="section-heading">
+          <p data-i18n="geo.021" class="kicker">港口节点</p>
+          <h2 data-i18n="geo.022">港口不是单纯买卖点，而是权力、货物、风险和信息的交汇处。</h2>
+        </div>
+        <div class="geo-grid">
+          <article class="geo-card major">
+            <div class="geo-card-head">
+              <span data-i18n="geo.023" class="tag fact">资料</span>
+              <strong data-i18n="geo.024">马尼拉 / Manila</strong>
+            </div>
+            <p data-i18n="geo.025">
+              西班牙在 1571 年建立殖民城市后，马尼拉成为太平洋白银与中国、东南亚货品交换的核心节点。中国商人，尤其福建商人，将丝绸、瓷器、漆器和加工品带到马尼拉，换取新西班牙白银。
+            </p>
+            <dl>
+              <dt data-i18n="geo.026">功能</dt>
+              <dd data-i18n="geo.027">白银-亚洲商品转换港；西班牙菲律宾殖民行政中心。</dd>
+              <dt data-i18n="geo.028">主要货品</dt>
+              <dd data-i18n="geo.029">美洲白银、丝绸、瓷器、香料、漆器、棉布、奴隶与人口流动。</dd>
+              <dt data-i18n="geo.030">游戏判断</dt>
+              <dd data-i18n="geo.031">高利润、高制度风险；大帆船周期可作为年度事件。</dd>
+            </dl>
+            <p data-i18n="geo.032" class="source-note">来源：Manila galleon；History of Manila；Flynn & Giraldez 1995。</p>
+          </article>
+
+          <article class="geo-card">
+            <div class="geo-card-head">
+              <span data-i18n="geo.033" class="tag fact">资料</span>
+              <strong data-i18n="geo.034">澳门 / Macau</strong>
+            </div>
+            <p data-i18n="geo.035">
+              16 世纪中叶后，澳门成为葡萄牙人在中国沿海的重要居留和贸易节点，连接广州贸易、印度洋、马六甲、果阿、日本和欧洲网络。
+            </p>
+            <dl>
+              <dt data-i18n="geo.036">功能</dt>
+              <dd data-i18n="geo.037">葡萄牙中国入口；中介贸易、传教、翻译和跨文化信息节点。</dd>
+              <dt data-i18n="geo.038">主要货品</dt>
+              <dd data-i18n="geo.039">中国丝瓷、印度洋商品、日本银铜、欧洲货物与军火。</dd>
+            </dl>
+            <p data-i18n="geo.040" class="source-note">来源：Macau 历史资料；葡萄牙亚洲贸易研究；Brook 1998。</p>
+          </article>
+
+          <article class="geo-card">
+            <div class="geo-card-head">
+              <span data-i18n="geo.041" class="tag fact">资料</span>
+              <strong data-i18n="geo.042">月港 / Yuegang</strong>
+            </div>
+            <p data-i18n="geo.043">
+              隆庆开海后，福建月港成为明朝允许民间海外贸易的重要出口口岸之一。它与漳州、泉州、福建海商和马尼拉贸易关系密切。
+            </p>
+            <dl>
+              <dt data-i18n="geo.044">功能</dt>
+              <dd data-i18n="geo.045">合法化后的福建海外贸易出口口岸。</dd>
+              <dt data-i18n="geo.046">主要货品</dt>
+              <dd data-i18n="geo.047">丝织品、瓷器、纸、铁器、糖、日用手工业品。</dd>
+            </dl>
+            <p data-i18n="geo.048" class="source-note">来源：隆庆开海研究；Manila galleon 关于福建商人供货的资料。</p>
+          </article>
+
+          <article class="geo-card">
+            <div class="geo-card-head">
+              <span data-i18n="geo.049" class="tag fact">资料</span>
+              <strong data-i18n="geo.050">Cavite / 甲米地</strong>
+            </div>
+            <p data-i18n="geo.051">
+              Cavite 位于马尼拉湾，是大帆船出入、修造、装货的重要港区。大型远洋船无法完全等同于城市河港活动，Cavite 更像马尼拉海上系统的外港和造船区。
+            </p>
+            <dl>
+              <dt data-i18n="geo.052">功能</dt>
+              <dd data-i18n="geo.053">大帆船港区、船坞、出发与抵达节点。</dd>
+              <dt data-i18n="geo.054">主要资源</dt>
+              <dd data-i18n="geo.055">船材、船工、补给、装卸劳力。</dd>
+            </dl>
+            <p data-i18n="geo.056" class="source-note">来源：Cavite City: Manila-Acapulco Galleon Trade。</p>
+          </article>
+
+          <article class="geo-card">
+            <div class="geo-card-head">
+              <span data-i18n="geo.057" class="tag fact">资料</span>
+              <strong data-i18n="geo.058">阿卡普尔科 / Acapulco</strong>
+            </div>
+            <p data-i18n="geo.059">
+              阿卡普尔科是马尼拉大帆船在美洲的核心终点。亚洲货物抵达后，经陆路转运至墨西哥城和韦拉克鲁斯，再进入大西洋贸易体系。
+            </p>
+            <dl>
+              <dt data-i18n="geo.060">功能</dt>
+              <dd data-i18n="geo.061">新西班牙太平洋港；亚洲货物进入美洲与欧洲市场的入口。</dd>
+              <dt data-i18n="geo.062">主要货品</dt>
+              <dd data-i18n="geo.063">出港多为白银；入港多为中国和亚洲奢侈品。</dd>
+            </dl>
+            <p data-i18n="geo.064" class="source-note">来源：Manila galleon；新西班牙贸易资料。</p>
+          </article>
+
+          <article class="geo-card">
+            <div class="geo-card-head">
+              <span data-i18n="geo.065" class="tag fact">资料</span>
+              <strong data-i18n="geo.066">马六甲 / Malacca</strong>
+            </div>
+            <p data-i18n="geo.067">
+              马六甲控制印度洋与南海之间的重要海峡位置。葡萄牙在 1511 年占领马六甲后，它成为葡萄牙亚洲网络的关键节点之一，但后来受到荷兰等势力挑战。
+            </p>
+            <dl>
+              <dt data-i18n="geo.068">功能</dt>
+              <dd data-i18n="geo.069">海峡中转、香料和印度洋商品集散。</dd>
+              <dt data-i18n="geo.070">主要货品</dt>
+              <dd data-i18n="geo.071">香料、印度洋商品、中国货、东南亚物产。</dd>
+            </dl>
+            <p data-i18n="geo.072" class="source-note">来源：马六甲海峡与葡萄牙亚洲贸易研究。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="cities" class="section-band alt">
+        <div class="section-heading">
+          <p data-i18n="geo.073" class="kicker">城市与腹地</p>
+          <h2 data-i18n="geo.074">港口利润来自腹地生产，城市和乡村要一起看。</h2>
+        </div>
+        <div class="city-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-i18n="geo.075">城市/区域</th>
+                <th data-i18n="geo.076">贸易功能</th>
+                <th data-i18n="geo.077">与港口关系</th>
+                <th data-i18n="geo.078">设计用途</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="geo.079">江南</td>
+                <td data-i18n="geo.080">丝织、手工业、消费与金融能力强</td>
+                <td data-i18n="geo.081">为东南沿海出口提供高价值货品</td>
+                <td data-i18n="geo.082">高品质货源、贷款、奢侈品需求</td>
+              </tr>
+              <tr>
+                <td data-i18n="geo.083">景德镇</td>
+                <td data-i18n="geo.084">瓷器生产中心</td>
+                <td data-i18n="geo.085">通过内河、陆路和商人网络进入出口港</td>
+                <td data-i18n="geo.086">订单生产、窑场风险、定制外销瓷</td>
+              </tr>
+              <tr>
+                <td data-i18n="geo.087">漳州/泉州</td>
+                <td data-i18n="geo.088">福建海商、船员、货源和海外关系</td>
+                <td data-i18n="geo.089">连接月港、马尼拉和东南亚</td>
+                <td data-i18n="geo.090">玩家起点、商帮网络、走私与合法贸易切换</td>
+              </tr>
+              <tr>
+                <td data-i18n="geo.091">墨西哥城</td>
+                <td data-i18n="geo.092">新西班牙行政与消费中心</td>
+                <td data-i18n="geo.093">接收阿卡普尔科转运来的亚洲货物</td>
+                <td data-i18n="geo.094">美洲需求、价格溢价、殖民官僚订单</td>
+              </tr>
+              <tr>
+                <td data-i18n="geo.095">韦拉克鲁斯</td>
+                <td data-i18n="geo.096">大西洋出口港</td>
+                <td data-i18n="geo.097">把亚洲货和美洲银货接入西班牙大西洋船队</td>
+                <td data-i18n="geo.098">跨洋贸易终端、欧洲需求反馈</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="goods" class="section-band">
+        <div class="section-heading">
+          <p data-i18n="geo.099" class="kicker">货品</p>
+          <h2 data-i18n="geo.100">货品不只是价格，还决定派系、技术、风险和文化传播。</h2>
+        </div>
+        <div class="goods-grid">
+          <article>
+            <h3 data-i18n="geo.101">白银</h3>
+            <p data-i18n="geo.102">来源包括美洲和日本，是大额贸易、税收和财富储藏的重要媒介。</p>
+            <span data-i18n="geo.103">机制：货币、税负、贷款、军费、银荒</span>
+          </article>
+          <article>
+            <h3 data-i18n="geo.104">丝绸与丝织品</h3>
+            <p data-i18n="geo.105">中国高价值出口品，马尼拉贸易中常被白银购买。</p>
+            <span data-i18n="geo.106">机制：订单、品质、运输损耗、奢侈品需求</span>
+          </article>
+          <article>
+            <h3 data-i18n="geo.107">瓷器</h3>
+            <p data-i18n="geo.108">中国外销商品之一，适合连接景德镇、内陆转运和海外审美需求。</p>
+            <span data-i18n="geo.109">机制：定制图样、易碎货、批量合同</span>
+          </article>
+          <article>
+            <h3 data-i18n="geo.110">香料</h3>
+            <p data-i18n="geo.111">东南亚与印度洋网络的重要商品，欧洲竞争强烈。</p>
+            <span data-i18n="geo.112">机制：垄断、战争、转运、港口封锁</span>
+          </article>
+          <article>
+            <h3 data-i18n="geo.113">日本银铜</h3>
+            <p data-i18n="geo.114">日本矿产在 16-17 世纪东亚贸易中重要，后续受日本对外政策影响。</p>
+            <span data-i18n="geo.115">机制：政策变化、海商中介、金银比价</span>
+          </article>
+          <article>
+            <h3 data-i18n="geo.116">船材与补给</h3>
+            <p data-i18n="geo.117">菲律宾、东南亚和中国沿海提供船材、粮食、水手、修船和港口劳力。</p>
+            <span data-i18n="geo.118">机制：航行准备、船坞、劳力短缺、台风季</span>
+          </article>
+        </div>
+        <div class="source-list compact-list">
+          <h3 data-i18n="geo.119">本节参考资料</h3>
+          <ul>
+            <li data-i18n="geo.120">Manila galleon 条目：用于马尼拉-阿卡普尔科贸易、福建商人供货、大帆船货品与白银流向。</li>
+            <li data-i18n="geo.121">History of Manila 与 Cavite City 条目：用于马尼拉建城、Cavite 港区和殖民行政背景。</li>
+            <li data-i18n="geo.122">Flynn & Giraldez, “Born with a ‘Silver Spoon’,” 1995：用于理解 1571 年、马尼拉和全球白银贸易的关系。</li>
+            <li data-i18n-html="geo.124">Brook, <em data-i18n="geo.123">The Confusions of Pleasure</em>, 1998：用于理解晚明商业社会和消费文化。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="routes-decision" class="section-band alt">
+        <div class="section-heading">
+          <p data-i18n="geo.125" class="kicker">页面结构判断</p>
+          <h2 data-i18n="geo.126">航线是否应该单独整理成页面？</h2>
+        </div>
+        <div class="decision-grid">
+          <article class="decision-card">
+            <span data-i18n="geo.127" class="tag inference">建议</span>
+            <h3 data-i18n="geo.128">现在先不急着拆</h3>
+            <p data-i18n="geo.129">
+              当前资料量还在建立基础名录，港口、城市和货品之间的关系尚未稳定。此时把航线单独成页，容易变成空框架。
+            </p>
+          </article>
+          <article class="decision-card">
+            <span data-i18n="geo.130" class="tag inference">拆分条件</span>
+            <h3 data-i18n="geo.131">当航线开始承载机制时再拆</h3>
+            <p data-i18n="geo.132">
+              如果每条线路都有季风窗口、风险事件、税费、派系控制、货品组合和价格周期，就值得单独建“航线页面”。
+            </p>
+          </article>
+          <article class="decision-card">
+            <span data-i18n="geo.133" class="tag inference">过渡做法</span>
+            <h3 data-i18n="geo.134">先在地理页记录关系</h3>
+            <p data-i18n="geo.135">
+              先把“马尼拉-阿卡普尔科”“月港-马尼拉”“澳门-果阿-马六甲”“日本-澳门/马尼拉”等关系作为港口条目字段保存。
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span data-i18n="geo.136">地理资料库 · 晚明海上贸易游戏世界观</span>
+      <button data-i18n="geo.137" id="printButton" type="button">导出/打印</button>
+    </footer>
+
+        <script src="./i18n-worldview.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

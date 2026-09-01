@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>礁石编辑器 · Level 3 Rock Layout</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  :root { --gold:#e8c98a; --panel:#11161d; --line:#26303c; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:radial-gradient(1200px 700px at 70% -10%, #16202b, #0b0f14 60%); color:#e7eef6; font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .editor-nav { display:flex; align-items:center; gap:14px; padding:14px 22px; border-bottom:1px solid var(--line); background:rgba(10,14,19,.6); position:sticky; top:0; z-index:5; backdrop-filter: blur(6px); }
+  .editor-nav .brand { font-weight:700; letter-spacing:.5px; display:flex; align-items:center; gap:8px; }
+  .editor-nav .brand .dot { width:10px; height:10px; border-radius:50%; background:var(--gold); box-shadow:0 0 12px var(--gold); }
+  .editor-nav a { color:#9fb2c4; text-decoration:none; font-size:14px; }
+  .editor-nav a:hover { color:var(--gold); }
+  .editor-nav .spacer { flex:1; }
+  .editor-nav .pill { font-size:12px; color:#7e93a6; border:1px solid var(--line); padding:4px 10px; border-radius:999px; }
+  .wrap { max-width:1180px; margin:0 auto; padding:22px; }
+  .layout { display:grid; grid-template-columns: minmax(420px, 1fr) 360px; gap:22px; align-items:start; }
+  @media (max-width: 940px){ .layout{ grid-template-columns:1fr; } }
+  .map-card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:14px; position:relative; }
+  .map-card h2 { margin:0 0 4px; font-size:16px; }
+  .map-card .hint { font-size:12.5px; color:#8499ad; margin:0 0 10px; line-height:1.5; }
+  canvas { width:100%; height:auto; display:block; border-radius:12px; background:#0c1118; cursor:crosshair; touch-action:none; }
+  .side { display:flex; flex-direction:column; gap:14px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:16px; }
+  .card h3 { margin:0 0 10px; font-size:14px; color:var(--gold); letter-spacing:.4px; }
+  .kv { display:flex; justify-content:space-between; font-size:13px; padding:3px 0; color:#bcd0e2; }
+  .kv b { color:#fff; font-weight:600; }
+  .row { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  button { font:inherit; cursor:pointer; border-radius:10px; border:1px solid var(--line); background:#1a222c; color:#dfe9f3; padding:9px 12px; font-size:13px; transition:.15s; }
+  button:hover { border-color:var(--gold); color:#fff; }
+  button.primary { background:linear-gradient(180deg,#e8c98a,#caa861); color:#1a130a; border-color:#e8c98a; font-weight:700; }
+  button.primary:hover { filter:brightness(1.06); }
+  button.danger:hover { border-color:#ff6b6b; color:#ff9b9b; }
+  button:disabled { opacity:.4; cursor:not-allowed; }
+  .sel-info { font-size:13px; color:#9fb2c4; min-height:20px; }
+  .slider-row { display:flex; align-items:center; gap:10px; margin-top:8px; font-size:13px; }
+  input[type=range]{ flex:1; accent-color:var(--gold); }
+  input[type=number]{ width:74px; background:#0c1118; border:1px solid var(--line); color:#fff; border-radius:8px; padding:6px; }
+  .status { font-size:13px; margin-top:10px; padding:8px 10px; border-radius:10px; border:1px solid var(--line); background:#0c1118; color:#9fb2c4; }
+  .status.ok { color:#7CFC9A; border-color:#2c5; }
+  .status.warn { color:#ffcf8a; border-color:#a80; }
+  textarea { width:100%; height:150px; background:#0c1118; color:#cfe3f5; border:1px solid var(--line); border-radius:10px; padding:10px; font-family:ui-monospace, Menlo, Consolas, monospace; font-size:12px; resize:vertical; }
+  .rock-list { max-height:190px; overflow:auto; margin-top:8px; }
+  .rock-list .ri { display:flex; justify-content:space-between; align-items:center; padding:7px 9px; border:1px solid var(--line); border-radius:9px; margin-bottom:6px; font-size:12.5px; cursor:pointer; }
+  .rock-list .ri.active { border-color:var(--gold); background:#1c232d; }
+  .rock-list .ri .meta { color:#9fb2c4; }
+  .rock-list .ri .x { color:#ff7b7b; border:none; background:none; font-size:15px; padding:0 4px; }
+  .legend { display:flex; gap:14px; flex-wrap:wrap; font-size:12px; color:#8499ad; margin-top:10px; }
+  .legend span { display:flex; align-items:center; gap:6px; }
+  .legend i { width:12px; height:12px; border-radius:50%; display:inline-block; }
+</style>
+</head>
+<body>
+<nav class="editor-nav">
+  <div class="brand"><span class="dot"></span> Sailing · 礁石编辑器</div>
+  <a href="index.html">← 返回首页</a>
+  <a href="game.html">▶ 打开游戏</a>
+  <div class="spacer"></div>
+  <div class="pill">Level 3 · 礁石迷宫 · 横风 90° · 目标 (0,−600) · 限时 160s</div>
+</nav>
+
+<div class="wrap">
+  <div class="layout">
+    <!-- 俯视地图 -->
+    <div class="map-card">
+      <h2>俯视布局图（Top-Down）</h2>
+      <p class="hint">在空白处<strong>单击添加礁石</strong>；拖拽可移动；在礁石上<strong>滚轮</strong>调大小；选中后按 <kbd>Delete</kbd> 或点「删除选中」移除。北(−Z)在上，东(+X)在右。</p>
+      <canvas id="map" width="780" height="860"></canvas>
+      <div class="legend">
+        <span><i style="background:#6b7280;border:2px solid #ff5b54;"></i> 礁石（红环=危险范围）</span>
+        <span><i style="background:#e8c98a;"></i> 起点</span>
+        <span><i style="background:#39d98a;"></i> 目标</span>
+        <span><i style="background:#5aa9ff;"></i> 风向（从东吹向西）</span>
+      </div>
+    </div>
+
+    <!-- 控制面板 -->
+    <div class="side">
+      <div class="card">
+        <h3>关卡信息</h3>
+        <div class="kv"><span>风力 Wind</span><b>90°（从东来）</b></div>
+        <div class="kv"><span>目标 Target</span><b>(0, −600)</b></div>
+        <div class="kv"><span>限时 Time</span><b>160 s</b></div>
+        <div class="kv"><span>礁石数量</span><b id="rock-count">0</b></div>
+        <div class="row">
+          <button id="btn-reset">重置为 L3 默认</button>
+          <button id="btn-clear" class="danger">清空全部</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>选中礁石</h3>
+        <div class="sel-info" id="sel-info">未选中（在地图上点一个礁石）</div>
+        <div class="slider-row">
+          <span>半径</span>
+          <input type="range" id="r-radius" min="5" max="45" step="1" value="14" disabled />
+          <input type="number" id="n-radius" min="5" max="45" value="14" disabled />
+        </div>
+        <div class="kv" style="margin-top:6px;"><span>X</span><b id="sel-x">—</b></div>
+        <div class="kv"><span>Z</span><b id="sel-z">—</b></div>
+        <div class="row">
+          <button id="btn-delete" class="danger" disabled>删除选中</button>
+        </div>
+        <div class="rock-list" id="rock-list"></div>
+      </div>
+
+      <div class="card">
+        <h3>应用到游戏</h3>
+        <div class="row">
+          <button id="btn-apply" class="primary">✓ 应用到游戏</button>
+          <button id="btn-export">导出 JS</button>
+        </div>
+        <div class="status" id="status">未应用 —— 游戏使用默认 L3 布局。</div>
+        <div id="export-box" style="display:none; margin-top:10px;">
+          <textarea id="export-text" readonly></textarea>
+          <div class="row"><button id="btn-copy">复制</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { LEVELS } from './src/config/levels.js';
+
+// ---------- 世界与画布映射 ----------
+const W = 780, H = 860, PAD = 46;
+const X_BOUND = 160;          // x ∈ [-160, 160]
+const Z_MIN = -680, Z_MAX = 70; // z ∈ [-680, 70]
+const scale = Math.min((W - 2 * PAD) / (2 * X_BOUND), (H - 2 * PAD) / (Z_MAX - Z_MIN));
+const worldToCanvas = (x, z) => ({ cx: W / 2 + x * scale, cy: PAD + (z - Z_MIN) * scale });
+const canvasToWorld = (cx, cy) => ({ x: (cx - W / 2) / scale, z: (cy - PAD) / scale + Z_MIN });
+
+const STORE_KEY = 'sailing.l3rocks';
+const DEFAULT_ROCKS = LEVELS[2].rocks.map(r => ({ ...r }));
+
+// ---------- 状态 ----------
+let rocks = [];
+let selected = -1;
+let drag = null; // { dx, dz }
+
+const canvas = document.getElementById('map');
+const ctx = canvas.getContext('2d');
+const dpr = Math.max(1, window.devicePixelRatio || 1);
+canvas.width = W * dpr; canvas.height = H * dpr;
+canvas.style.aspectRatio = W + ' / ' + H;
+ctx.scale(dpr, dpr);
+
+// ---------- 读取/保存 ----------
+function loadFromStore() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    if (raw) { const arr = JSON.parse(raw); if (Array.isArray(arr)) return arr.map(r => ({ x:+r.x, z:+r.z, radius:+r.radius })); }
+  } catch (e) {}
+  return null;
+}
+rocks = loadFromStore() || DEFAULT_ROCKS.map(r => ({ ...r }));
+selected = rocks.length ? 0 : -1;
+
+// ---------- 绘制 ----------
+function clampRock(r) {
+  r.x = Math.max(-X_BOUND, Math.min(X_BOUND, r.x));
+  r.z = Math.max(Z_MIN + r.radius * 0.3, Math.min(Z_MAX, r.z));
+  r.radius = Math.max(5, Math.min(45, r.radius));
+}
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  // 网格
+  ctx.strokeStyle = 'rgba(255,255,255,.04)'; ctx.lineWidth = 1;
+  for (let gx = -X_BOUND; gx <= X_BOUND; gx += 40) {
+    const a = worldToCanvas(gx, Z_MIN), b = worldToCanvas(gx, Z_MAX);
+    ctx.beginPath(); ctx.moveTo(a.cx, a.cy); ctx.lineTo(b.cx, b.cy); ctx.stroke();
+  }
+  for (let gz = Z_MIN; gz <= Z_MAX; gz += 80) {
+    const a = worldToCanvas(-X_BOUND, gz), b = worldToCanvas(X_BOUND, gz);
+    ctx.beginPath(); ctx.moveTo(a.cx, a.cy); ctx.lineTo(b.cx, b.cy); ctx.stroke();
+  }
+  // 中线
+  ctx.strokeStyle = 'rgba(232,201,138,.18)'; ctx.setLineDash([6, 8]);
+  const m0 = worldToCanvas(0, Z_MIN), m1 = worldToCanvas(0, Z_MAX);
+  ctx.beginPath(); ctx.moveTo(m0.cx, m0.cy); ctx.lineTo(m1.cx, m1.cy); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // 风向箭头（从东吹向西，-x 方向）
+  const wTop = worldToCanvas(0, Z_MAX - 30);
+  ctx.strokeStyle = '#5aa9ff'; ctx.fillStyle = '#5aa9ff'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(wTop.cx + 60, wTop.cy); ctx.lineTo(wTop.cx - 60, wTop.cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(wTop.cx - 60, wTop.cy); ctx.lineTo(wTop.cx - 44, wTop.cy - 8); ctx.lineTo(wTop.cx - 44, wTop.cy + 8); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#9fc6ff'; ctx.font = '12px ui-sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('风 Wind 90°（从东吹向西）', wTop.cx, wTop.cy - 14);
+
+  // 目标
+  const t = worldToCanvas(0, -600);
+  ctx.strokeStyle = '#39d98a'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.arc(t.cx, t.cy, 16, 0, Math.PI * 2); ctx.stroke();
+  ctx.fillStyle = '#39d98a'; ctx.beginPath(); ctx.arc(t.cx, t.cy, 5, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#9af0c2'; ctx.font = '13px ui-sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('目标 Target (0, −600)', t.cx, t.cy + 34);
+
+  // 起点
+  const s = worldToCanvas(0, 0);
+  ctx.fillStyle = '#e8c98a';
+  ctx.beginPath(); ctx.moveTo(s.cx, s.cy - 11); ctx.lineTo(s.cx - 8, s.cy + 9); ctx.lineTo(s.cx + 8, s.cy + 9); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#f0dcb0'; ctx.font = '13px ui-sans-serif';
+  ctx.fillText('起点 Start', s.cx, s.cy + 26);
+
+  // 礁石
+  rocks.forEach((r, i) => {
+    const p = worldToCanvas(r.x, r.z);
+    const rr = Math.max(8, r.radius * scale);
+    // 危险环
+    ctx.fillStyle = 'rgba(255,91,84,.10)';
+    ctx.beginPath(); ctx.arc(p.cx, p.cy, rr + 4, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#ff5b54'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(p.cx, p.cy, rr + 4, 0, Math.PI * 2); ctx.stroke();
+    // 岩体
+    ctx.fillStyle = i === selected ? '#8b94a3' : '#6b7280';
+    ctx.beginPath(); ctx.arc(p.cx, p.cy, rr, 0, Math.PI * 2); ctx.fill();
+    if (i === selected) {
+      ctx.strokeStyle = '#e8c98a'; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.arc(p.cx, p.cy, rr + 8, 0, Math.PI * 2); ctx.stroke();
+      // 半径手柄
+      ctx.fillStyle = '#e8c98a';
+      ctx.beginPath(); ctx.arc(p.cx + rr + 8, p.cy, 5, 0, Math.PI * 2); ctx.fill();
+    }
+  });
+}
+
+// ---------- 命中检测 ----------
+function hitRock(cx, cy) {
+  for (let i = rocks.length - 1; i >= 0; i--) {
+    const p = worldToCanvas(rocks[i].x, rocks[i].z);
+    const rr = Math.max(10, rocks[i].radius * scale) + 6;
+    if ((cx - p.cx) ** 2 + (cy - p.cy) ** 2 <= rr * rr) return i;
+  }
+  return -1;
+}
+
+// ---------- 交互 ----------
+function evtPos(e) {
+  const rect = canvas.getBoundingClientRect();
+  const cx = (e.clientX - rect.left) * (W / rect.width);
+  const cy = (e.clientY - rect.top) * (H / rect.height);
+  return { cx, cy };
+}
+canvas.addEventListener('mousedown', (e) => {
+  const { cx, cy } = evtPos(e);
+  const i = hitRock(cx, cy);
+  if (i >= 0) {
+    selected = i;
+    const p = worldToCanvas(rocks[i].x, rocks[i].z);
+    drag = { dx: cx - p.cx, dy: cy - p.cy };
+  } else {
+    const w = canvasToWorld(cx, cy);
+    rocks.push({ x: w.x, z: w.z, radius: 14 });
+    clampRock(rocks[rocks.length - 1]);
+    selected = rocks.length - 1;
+  }
+  syncUI(); draw();
+});
+window.addEventListener('mousemove', (e) => {
+  if (!drag) return;
+  const { cx, cy } = evtPos(e);
+  const w = canvasToWorld(cx - drag.dx, cy - drag.dy);
+  rocks[selected].x = w.x; rocks[selected].z = w.z; clampRock(rocks[selected]);
+  syncUI(); draw();
+});
+window.addEventListener('mouseup', () => { drag = null; });
+canvas.addEventListener('wheel', (e) => {
+  const { cx, cy } = evtPos(e);
+  const i = hitRock(cx, cy);
+  if (i >= 0) {
+    e.preventDefault();
+    rocks[i].radius = Math.max(5, Math.min(45, rocks[i].radius - Math.sign(e.deltaY) * 1.5));
+    selected = i; syncUI(); draw();
+  }
+}, { passive: false });
+canvas.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  const { cx, cy } = evtPos(e);
+  const i = hitRock(cx, cy);
+  if (i >= 0) { rocks.splice(i, 1); selected = -1; syncUI(); draw(); }
+});
+window.addEventListener('keydown', (e) => {
+  if ((e.key === 'Delete' || e.key === 'Backspace') && selected >= 0) {
+    rocks.splice(selected, 1); selected = -1; syncUI(); draw();
+  }
+});
+
+// ---------- UI 同步 ----------
+const $ = (id) => document.getElementById(id);
+function syncUI() {
+  $('rock-count').textContent = rocks.length;
+  const r = rocks[selected];
+  if (r) {
+    $('sel-info').textContent = `第 ${selected + 1} 个礁石`;
+    $('sel-x').textContent = r.x.toFixed(1);
+    $('sel-z').textContent = r.z.toFixed(1);
+    $('r-radius').value = Math.round(r.radius);
+    $('n-radius').value = Math.round(r.radius);
+    $('r-radius').disabled = false; $('n-radius').disabled = false; $('btn-delete').disabled = false;
+  } else {
+    $('sel-info').textContent = '未选中（在地图上点一个礁石）';
+    $('sel-x').textContent = '—'; $('sel-z').textContent = '—';
+    $('r-radius').disabled = true; $('n-radius').disabled = true; $('btn-delete').disabled = true;
+  }
+  // 列表
+  const list = $('rock-list');
+  list.innerHTML = '';
+  rocks.forEach((r, i) => {
+    const div = document.createElement('div');
+    div.className = 'ri' + (i === selected ? ' active' : '');
+    div.innerHTML = `<span>礁石 ${i + 1}</span><span class="meta">(${r.x.toFixed(0)}, ${r.z.toFixed(0)}) r=${Math.round(r.radius)}</span>`;
+    div.addEventListener('click', () => { selected = i; syncUI(); draw(); });
+    const x = document.createElement('button'); x.className = 'x'; x.textContent = '×';
+    x.addEventListener('click', (ev) => { ev.stopPropagation(); rocks.splice(i, 1); if (selected >= rocks.length) selected = rocks.length - 1; syncUI(); draw(); });
+    div.appendChild(x);
+    list.appendChild(div);
+  });
+}
+$('r-radius').addEventListener('input', (e) => { if (rocks[selected]) { rocks[selected].radius = +e.target.value; $('n-radius').value = e.target.value; clampRock(rocks[selected]); draw(); } });
+$('n-radius').addEventListener('input', (e) => { if (rocks[selected]) { rocks[selected].radius = +e.target.value; $('r-radius').value = e.target.value; clampRock(rocks[selected]); draw(); } });
+$('btn-delete').addEventListener('click', () => { if (selected >= 0) { rocks.splice(selected, 1); selected = -1; syncUI(); draw(); } });
+$('btn-clear').addEventListener('click', () => { rocks = []; selected = -1; syncUI(); draw(); });
+$('btn-reset').addEventListener('click', () => { rocks = DEFAULT_ROCKS.map(r => ({ ...r })); selected = rocks.length ? 0 : -1; syncUI(); draw(); });
+
+// ---------- 应用 / 导出 ----------
+function fmt(n) { return (Math.round(n * 10) / 10).toString(); }
+$('btn-apply').addEventListener('click', () => {
+  const data = rocks.map(r => ({ x: +fmt(r.x), z: +fmt(r.z), radius: +fmt(r.radius) }));
+  localStorage.setItem(STORE_KEY, JSON.stringify(data));
+  const st = $('status'); st.className = 'status ok';
+  st.textContent = `✓ 已应用到游戏（共 ${data.length} 块）。若游戏已在 Level 3 中打开，礁石会实时更新；否则打开游戏并选择 Level 3 即可生效。`;
+});
+$('btn-export').addEventListener('click', () => {
+  const body = rocks.map(r => `      { x: ${fmt(r.x)}, z: ${fmt(r.z)}, radius: ${fmt(r.radius)} },`).join('\n');
+  $('export-text').value = `rocks: [\n${body}\n    ],`;
+  $('export-box').style.display = 'block';
+});
+$('btn-copy').addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText($('export-text').value); $('btn-copy').textContent = '已复制 ✓'; setTimeout(() => $('btn-copy').textContent = '复制', 1500); }
+  catch (e) { $('export-text').select(); }
+});
+
+// 初始状态提示
+if (localStorage.getItem(STORE_KEY)) { const st = $('status'); st.className = 'status warn'; st.textContent = '检测到已保存的自定义布局（已载入编辑器）。点「应用到游戏」可再次写入。'; }
+syncUI(); draw();
+</script>
+</body>
+</html>

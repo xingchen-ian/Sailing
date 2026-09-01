@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="idx.001">晚明海上贸易世界观</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a data-i18n="idx.002" href="../index.html" style="display:inline-block;margin:12px 16px 0;font-size:14px;color:#b3842f;text-decoration:none;font-weight:600;">← 返回帆船游戏主站（Sailing）</a>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <p data-i18n="idx.003" class="eyebrow">1571-1644 · 晚明 · 全球海贸</p>
+          <h1 data-i18n="idx.004">明朝海上贸易游戏世界观</h1>
+        </div>
+      </div>
+      <nav class="nav" aria-label="页面章节">
+        <a data-i18n="idx.005" href="./geography.html">地理资料库</a>
+        <a data-i18n="idx.006" href="./routes.html">航线网络</a>
+        <a data-i18n="idx.007" href="./ships.html">中式帆船</a>
+        <a data-i18n="idx.008" href="./gameplay.html">玩法设计</a>
+        <a data-i18n="idx.009" href="#trade">贸易潮流</a>
+        <a data-i18n="idx.010" href="#silver">白银机制</a>
+        <a data-i18n="idx.011" href="#society">国内阶层</a>
+        <a data-i18n="idx.012" href="#decline">衰败原因</a>
+        <a data-i18n="idx.013" href="#expansion">海贸扩张</a>
+            <div class="lang-switcher">
+        <button type="button" class="lang-switch active" data-lang="zh">中</button>
+        <button type="button" class="lang-switch" data-lang="en">EN</button>
+      </div>
+    </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <p data-i18n="idx.014" class="kicker">游戏历史底盘</p>
+          <h2 data-i18n="idx.015">一个国家控制力下降、民间商业扩张、白银把全球连成一张网的时代。</h2>
+          <p data-i18n="idx.016">
+            本页把晚明海上贸易拆成四个基础问题，作为后续地图、派系、商品、事件和角色系统的共同依据。
+            这里的重点不是把晚明写成单线衰亡，而是呈现一个高度流动、机会巨大、风险同样巨大的海上世界。
+          </p>
+        </div>
+        <div class="world-panel" aria-label="晚明海上贸易节点示意">
+          <div data-i18n="idx.017" class="map-title">全球贸易节点示意</div>
+          <div class="route-map">
+            <span data-i18n="idx.018" class="node china">东南沿海</span>
+            <span data-i18n="idx.019" class="node macau">澳门</span>
+            <span data-i18n="idx.020" class="node manila">马尼拉</span>
+            <span data-i18n="idx.021" class="node japan">日本</span>
+            <span data-i18n="idx.022" class="node malacca">马六甲</span>
+            <span data-i18n="idx.023" class="node goa">果阿</span>
+            <span data-i18n="idx.024" class="node acapulco">阿卡普尔科</span>
+            <span class="route r1"></span>
+            <span class="route r2"></span>
+            <span class="route r3"></span>
+            <span class="route r4"></span>
+            <span class="route r5"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="timeline" aria-label="关键时间线">
+        <article>
+          <strong data-i18n="idx.025">1557</strong>
+          <span data-i18n="idx.026">澳门成为葡萄牙人在中国沿海的重要据点。</span>
+        </article>
+        <article>
+          <strong data-i18n="idx.027">1567</strong>
+          <span data-i18n="idx.028">隆庆开海，月港贸易合法化，民间海外贸易扩张。</span>
+        </article>
+        <article>
+          <strong data-i18n="idx.029">1571</strong>
+          <span data-i18n="idx.030">西班牙建立马尼拉，美洲白银经太平洋进入亚洲。</span>
+        </article>
+        <article>
+          <strong data-i18n="idx.031">1620s</strong>
+          <span data-i18n="idx.032">荷兰、葡萄牙、西班牙、中国海商和日本商路竞争加剧。</span>
+        </article>
+        <article>
+          <strong data-i18n="idx.033">1644</strong>
+          <span data-i18n="idx.034">明朝灭亡，但东亚海商网络没有随王朝一起消失。</span>
+        </article>
+      </section>
+
+      <section id="trade" class="section-band">
+        <div class="section-heading">
+          <p data-i18n="idx.035" class="kicker">问题一</p>
+          <h2 data-i18n="idx.036">当时世界贸易的主要潮流是什么？</h2>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3 data-i18n="idx.037">白银成为全球贸易的关键媒介</h3>
+            <p data-i18n="idx.038">
+              16-17 世纪的核心潮流之一，是美洲和日本白银大量流入亚洲，尤其流入中国。中国输出丝绸、瓷器和多种手工业品以换取白银；茶叶在明代已有贸易意义，但把茶叶视为对欧贸易的压倒性核心，更适合放到清代中后期讨论。
+            </p>
+            <p data-i18n="idx.039" class="game-note">游戏化含义：银价、银荒、税收和远洋利润可以成为经济系统的核心变量。</p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="idx.040">海上贸易从朝贡秩序转向商人网络</h3>
+            <p data-i18n="idx.041">
+              明初郑和下西洋代表国家主导的海上秩序；晚明的实际动力则来自福建、广东、江南商人，以及澳门、马尼拉、马六甲、日本和东南亚港市组成的跨区域网络。
+            </p>
+            <p data-i18n="idx.042" class="game-note">游戏化含义：玩家不是帝国舰队司令，而更适合作为海商、代理人、走私者、船队主或地方势力合作者。</p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="idx.043">欧洲势力进入亚洲，但并非单方面支配</h3>
+            <p data-i18n="idx.044">
+              葡萄牙、西班牙、荷兰、英国陆续进入亚洲海域。它们拥有远洋航海、炮舰和殖民据点，但在东亚和东南亚仍必须依赖本地商人、港市、翻译、金融和补给网络。
+            </p>
+            <p data-i18n="idx.045" class="game-note">游戏化含义：欧洲势力可设为强力派系，但不是无敌主角；它们需要中国货物和亚洲中介。</p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="idx.046">商品流动呈现多中心格局</h3>
+            <p data-i18n="idx.047">
+              中国输出丝绸、瓷器、铁器、纸张和手工业品；日本输出白银、铜；东南亚输出香料、木材、粮食、药材和海产；美洲输出白银；欧洲人则连接航线、军火、宗教和殖民据点。
+            </p>
+            <p data-i18n="idx.048" class="game-note">游戏化含义：不同港口应有不同需求、库存、政治风险和价格周期。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="silver" class="section-band evidence-section">
+        <div class="section-heading">
+          <p data-i18n="idx.049" class="kicker">资料深化</p>
+          <h2 data-i18n="idx.050">白银、银荒与晚明市场</h2>
+        </div>
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <span data-i18n="idx.051" class="tag fact">资料</span>
+            <h3 data-i18n="idx.052">银荒不是“世界上没有银子”</h3>
+            <p data-i18n="idx.053">
+              在晚明语境里，银荒更准确地说是货币性白银的紧张：市场、税收和军费都需要白银，但普通人取得白银的成本上升。若农民以粮食、布匹或铜钱收入为主，却必须缴纳折银税，银价上涨就会让实际税负变重。
+            </p>
+            <p data-i18n="idx.054" class="source-note">
+              依据：一条鞭法把多种赋役折并为银；17 世纪前期白银流入波动与银价上升，常被用来解释晚明财政压力，但学界也提醒不能把明亡简化为单一“银荒”。
+            </p>
+          </article>
+          <article class="evidence-card">
+            <span data-i18n="idx.055" class="tag fact">资料</span>
+            <h3 data-i18n="idx.056">白银进入中国后的分配并不平均</h3>
+            <p data-i18n="idx.057">
+              白银通常先进入沿海和贸易节点，例如福建、广东、澳门、马尼拉贸易圈，再通过商人采购、批发、放贷、地租、赋税和军费支出进入更大范围的经济网络。江南、东南沿海和大运河沿线更容易接触白银；内陆和北方边地取得白银更困难。
+            </p>
+            <p data-i18n="idx.058" class="source-note">
+              依据：马尼拉大帆船贸易、澳门贸易、福建商人赴马尼拉交易，以及晚明税收银本位化的研究。这里的“分配”是经济流向概括，不等于有一套中央统一分银制度。
+            </p>
+          </article>
+          <article class="evidence-card">
+            <span data-i18n="idx.059" class="tag inference">判断</span>
+            <h3 data-i18n="idx.060">白银更像一套压力传导系统</h3>
+            <p data-i18n="idx.061">
+              海外银流增加时，商贸、生产和国家收入可能扩张；海外银流受阻或银价上升时，压力会传到纳税者、借贷者、军饷系统和地方财政。对游戏来说，白银不只是货币资源，也可以是连接世界贸易与国内危机的总变量。
+            </p>
+            <p data-i18n="idx.062" class="source-note">
+              判断依据：晚明市场货币化、一条鞭法、马尼拉-中国白银流，以及关于 17 世纪货币危机的争论。
+            </p>
+          </article>
+        </div>
+
+        <div class="explain-block">
+          <h3 data-i18n="idx.063">如何理解“中国输出需求强，而税制和市场越来越依赖白银”？</h3>
+          <p data-i18n="idx.064">
+            这句话要拆成两层。第一层是外部贸易：欧洲和美洲市场想要中国丝绸、瓷器等亚洲商品，但欧洲人在中国市场能卖出的本土商品有限，所以常用白银支付。第二层是中国内部：明代纸币失败、铜钱供应和大额支付不稳定，白银逐渐成为大额交易、赋税折纳、商业结算和财富储藏的重要媒介。
+          </p>
+          <p data-i18n="idx.065">
+            因此它不是说所有日常小买卖都用白银。更准确的表述是：基层小额交易仍常用铜钱、实物和赊欠关系，但国家税收、长距离贸易、批发采购、地租、放贷和军费越来越被白银计价或结算。
+          </p>
+        </div>
+
+        <div class="explain-block">
+          <h3 data-i18n="idx.066">白银刚进入沿海贸易节点后，先放在哪里？谁持有？</h3>
+          <p data-i18n="idx.067">
+            晚明没有现代意义上的中央银行，也不能假设有一套统一的“入境白银分配制度”。白银首先是交易支付物：在马尼拉、澳门、月港、广州等节点，它通常先在船舱、商馆、货栈、商人住宅、牙行/经纪人手中、银铺或兑换称量场景中短暂停留。完成交易后，白银的第一批中国持有者多是海商、批发商、船主、合伙商号、货物供应商和为交易提供信用的地方富户。
+          </p>
+          <p data-i18n="idx.068">
+            其中一部分很快被用于继续采购丝、瓷、布、糖、纸、铁器等货物；一部分被熔铸、称量、折算成适合本地交易的银锭或碎银；一部分流入放贷、地租、买地、婚丧、奢侈消费和储藏；还有一部分通过关税、许可证费、地方摊派、商税和军费需求进入官府财政。换句话说，它先被“港口商业网络”持有，再通过商品采购、债务、税收和消费向内陆扩散。
+          </p>
+          <p data-i18n="idx.069" class="source-note">
+            判断依据：马尼拉大帆船贸易资料显示，中国货物主要由福建等港口地区商人供应并以新大陆白银购买；全球白银贸易研究指出中国是白银重要流向地，但中间经过商人和港口交易；晚明经济资料显示江南、福建、运河沿线等商业区货币使用和批发网络更发达。因此“谁先持有”应理解为沿海贸易共同体和地方商业中介，而不是中央政府直接接收。
+          </p>
+        </div>
+
+        <div class="source-list">
+          <h3 data-i18n="idx.070">本节参考资料</h3>
+          <ul>
+            <li data-i18n-html="idx.072">
+              Dennis O. Flynn and Arturo Giraldez, “Born with a ‘Silver Spoon’: The Origin of World Trade in 1571,” <em data-i18n="idx.071">Journal of World History</em>, 1995。用于理解马尼拉、白银和早期全球贸易的联系。
+            </li>
+            <li data-i18n-html="idx.074">
+              Richard von Glahn, “Myth and Reality of China’s Seventeenth-Century Monetary Crisis,” <em data-i18n="idx.073">The Journal of Economic History</em>, 1996。用于提醒“银荒导致明亡”的说法需要谨慎，不能单因解释。
+            </li>
+            <li data-i18n-html="idx.076">
+              Ray Huang, <em data-i18n="idx.075">Taxation and Governmental Finance in Sixteenth-Century Ming China</em>, Cambridge University Press。用于理解明代税制、财政和折银化。
+            </li>
+            <li data-i18n-html="idx.078">
+              Timothy Brook, <em data-i18n="idx.077">The Confusions of Pleasure: Commerce and Culture in Ming China</em>, University of California Press, 1998。用于理解晚明商业文化、市场扩张和社会变化。
+            </li>
+            <li data-i18n="idx.079">
+              “Global silver trade from the 16th to 19th centuries,” Wikipedia 条目。仅作线索索引，具体判断以上述学术研究为准。
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="society" class="section-band alt">
+        <div class="section-heading">
+          <p data-i18n="idx.080" class="kicker">问题二</p>
+          <h2 data-i18n="idx.081">当时中国国内主要阶层是什么？</h2>
+        </div>
+        <div class="class-list">
+          <article>
+            <h3 data-i18n="idx.082">皇室与中央官僚</h3>
+            <p data-i18n="idx.083">掌握合法财政、军政任命和法令权力，但晚明中央财政紧张，行政效率下降，地方执行常常变形。</p>
+          </article>
+          <article>
+            <h3 data-i18n="idx.084">士绅与科举精英</h3>
+            <p data-i18n="idx.085">地方社会的核心中介，既是文化和政治精英，也通过土地、宗族、书院、诉讼和地方事务影响基层秩序。</p>
+          </article>
+          <article>
+            <h3 data-i18n="idx.086">地主与富户</h3>
+            <p data-i18n="idx.087">拥有土地、租佃关系和地方资源。部分与商人、士绅身份重叠，能把农业收入转入商业、放贷和教育投资。</p>
+          </article>
+          <article>
+            <h3 data-i18n="idx.088">商人和海商</h3>
+            <p data-i18n="idx.089">社会地位在儒家名分中未必最高，但实际经济力量增强。海商尤其处在合法贸易、走私、武装护航和官府合作之间。</p>
+          </article>
+          <article>
+            <h3 data-i18n="idx.090">工匠、船工、矿工与城市劳动者</h3>
+            <p data-i18n="idx.091">支撑丝织、瓷器、造船、冶铁、矿业和港口转运，是海贸繁荣背后的生产和技术基础。</p>
+          </article>
+          <article>
+            <h3 data-i18n="idx.092">农民、佃户与流民</h3>
+            <p data-i18n="idx.093">人数最多，承受赋税、徭役、灾荒和土地兼并压力。晚明危机中，大量破产农民和流民成为起义、军队和边缘经济的一部分。</p>
+          </article>
+          <article>
+            <h3 data-i18n="idx.094">军户、边军与海防力量</h3>
+            <p data-i18n="idx.095">制度上负责防务，现实中常因欠饷、腐败和资源不足而战斗力下降。沿海军防与海商、海盗之间界线并不总是清楚。</p>
+          </article>
+          <article>
+            <h3 data-i18n="idx.096">僧道、传教士与跨文化中介</h3>
+            <p data-i18n="idx.097">宗教人物、翻译、买办和混血社群连接知识、语言和贸易渠道，在澳门、马尼拉等港口尤其重要。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="decline" class="section-band">
+        <div class="section-heading">
+          <p data-i18n="idx.098" class="kicker">问题三</p>
+          <h2 data-i18n="idx.099">明朝衰败以致灭亡的原因有哪些？</h2>
+        </div>
+        <div class="cause-layout">
+          <article class="cause primary">
+            <h3 data-i18n="idx.100">财政结构脆弱</h3>
+            <p data-i18n="idx.101">
+              一条鞭法等改革提高了白银在税收中的重要性。当白银流入顺畅时，市场繁荣；当国际贸易、战争或日本禁银等因素影响白银供给时，税负和财政压力迅速传导到基层。
+            </p>
+          </article>
+          <article class="cause">
+            <h3 data-i18n="idx.102">辽东战争与军费失控</h3>
+            <p data-i18n="idx.103">后金/清的崛起迫使明朝长期投入辽东防线，军费巨大，财政被持续抽血。</p>
+          </article>
+          <article class="cause">
+            <h3 data-i18n="idx.104">气候灾害与粮食危机</h3>
+            <p data-i18n="idx.105">小冰期背景下，旱灾、蝗灾、寒冷和饥荒频发，社会承受力下降。</p>
+          </article>
+          <article class="cause">
+            <h3 data-i18n="idx.106">土地兼并和基层失衡</h3>
+            <p data-i18n="idx.107">土地集中、逃税、豪强庇护和赋役不均，使普通农民承担更重压力。</p>
+          </article>
+          <article class="cause">
+            <h3 data-i18n="idx.108">官僚内耗与党争</h3>
+            <p data-i18n="idx.109">东林党争、宦官政治、皇帝怠政和官僚责任转移，使很多危机难以及时处理。</p>
+          </article>
+          <article class="cause">
+            <h3 data-i18n="idx.110">农民起义与地方失控</h3>
+            <p data-i18n="idx.111">李自成、张献忠等起义不是单一原因造成，而是财政、灾荒、军政失灵叠加后的结果。</p>
+          </article>
+          <article class="cause">
+            <h3 data-i18n="idx.112">边疆军事压力</h3>
+            <p data-i18n="idx.113">北方满洲、蒙古因素与内地起义同时发生，使明朝无法集中资源解决一个方向的问题。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="expansion" class="section-band alt">
+        <div class="section-heading">
+          <p data-i18n="idx.114" class="kicker">问题四</p>
+          <h2 data-i18n="idx.115">为什么明后期全球进入海上贸易扩张时期？</h2>
+        </div>
+        <div class="grid three">
+          <article class="card compact">
+            <h3 data-i18n="idx.116">技术与航海知识扩散</h3>
+            <p data-i18n="idx.117">远洋帆船、火炮、海图、季风知识和天文导航逐渐成熟，使跨洋航线更稳定。</p>
+          </article>
+          <article class="card compact">
+            <h3 data-i18n="idx.118">欧洲国家竞争外溢</h3>
+            <p data-i18n="idx.119">葡萄牙、西班牙、荷兰、英国的竞争推动它们寻找香料、白银、传教空间和贸易据点。</p>
+          </article>
+          <article class="card compact">
+            <h3 data-i18n="idx.120">美洲白银打开支付能力</h3>
+            <p data-i18n="idx.121">美洲银矿让跨洲贸易有了可被亚洲市场接受的硬通货，尤其满足中国对白银的需求。</p>
+          </article>
+          <article class="card compact">
+            <h3 data-i18n="idx.122">亚洲市场本身足够强大</h3>
+            <p data-i18n="idx.123">中国、日本、印度和东南亚不是被动接入全球贸易，而是以巨大需求和成熟生产吸引外来航线。</p>
+          </article>
+          <article class="card compact">
+            <h3 data-i18n="idx.124">明朝海禁松动与地方利益</h3>
+            <p data-i18n="idx.125">隆庆开海并没有创造民间贸易，但承认并释放了一部分既有力量，使合法与灰色贸易一起增长。</p>
+          </article>
+          <article class="card compact">
+            <h3 data-i18n="idx.126">海上武装商业化</h3>
+            <p data-i18n="idx.127">商船、护航、雇佣武装、海盗和殖民舰队交织，使海上贸易天然带有军事和外交风险。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-band design-board">
+        <div class="section-heading">
+          <p data-i18n="idx.128" class="kicker">转化为游戏系统</p>
+          <h2 data-i18n="idx.129">第一版世界观机制方向</h2>
+        </div>
+        <div class="mechanic-grid">
+          <article>
+            <h3 data-i18n="idx.130">银本位市场</h3>
+            <p data-i18n="idx.131">白银供给影响税收、商品价格、军费、贷款和民变风险。</p>
+          </article>
+          <article>
+            <h3 data-i18n="idx.132">许可证与灰色贸易</h3>
+            <p data-i18n="idx.133">合法贸易带来安全，走私贸易带来利润，二者都需要处理官府关系。</p>
+          </article>
+          <article>
+            <h3 data-i18n="idx.134">多派系港口</h3>
+            <p data-i18n="idx.135">每个港口由官府、商帮、外商、宗教势力、海盗和本地劳工共同塑造。</p>
+          </article>
+          <article>
+            <h3 data-i18n="idx.136">王朝危机进度条</h3>
+            <p data-i18n="idx.137">灾荒、辽饷、银荒、边患和起义推动时代局势变化，影响所有航线。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span data-i18n="idx.138">晚明海上贸易游戏世界观 · 本地原型</span>
+      <button data-i18n="idx.139" id="printButton" type="button">导出/打印</button>
+    </footer>
+
+        <script src="./i18n-worldview.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

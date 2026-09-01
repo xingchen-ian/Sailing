@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="960" viewBox="0 0 1500 960" role="img" aria-labelledby="title desc">
+  <title id="title">不同风角和帆角下的前向力量变化</title>
+  <desc id="desc">一张风帆驾驶教学图，展示相对风角、帆角、最佳帆角和船获得前向力量之间的关系。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f1e4; }
+      .panel { fill: #fffdf8; stroke: #ded2bd; stroke-width: 2; }
+      .ink { fill: #1f2528; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", sans-serif; }
+      .muted { fill: #6d7375; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", sans-serif; }
+      .label { fill: #314146; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", sans-serif; font-weight: 700; }
+      .small { font-size: 18px; }
+      .tiny { font-size: 15px; }
+      .axis { stroke: #48565a; stroke-width: 2; }
+      .grid { stroke: #d7cbb8; stroke-width: 1; }
+      .curve { fill: none; stroke: #2f7d32; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+      .curve2 { fill: none; stroke: #1f6f8b; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .danger { fill: rgba(196, 65, 54, 0.14); }
+      .note { fill: #fff8e7; stroke: #d9bc78; stroke-width: 2; }
+      .boat { fill: #c8ced1; stroke: #727b80; stroke-width: 2; }
+      .bow { fill: #b88a44; stroke: #8b6a35; stroke-width: 2; }
+      .mast { stroke: #514840; stroke-width: 7; stroke-linecap: round; }
+      .sail { fill: #86bddf; fill-opacity: 0.78; stroke: #3e86ad; stroke-width: 2; }
+      .wind { stroke: #d64b45; stroke-width: 5; stroke-linecap: round; marker-end: url(#arrow-red); }
+      .force { stroke: #367a12; stroke-width: 6; stroke-linecap: round; marker-end: url(#arrow-green); }
+      .weakforce { stroke: #7fa75a; stroke-width: 4; stroke-linecap: round; marker-end: url(#arrow-green-small); }
+      .sail-line { stroke: #2f7fa9; stroke-width: 5; stroke-linecap: round; }
+      .bar-bg { fill: #e1ded5; }
+      .bar-fill { fill: #3c8b16; }
+      .bar-low { fill: #c94639; }
+    </style>
+    <marker id="arrow-red" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M 0 1 L 13 7 L 0 13 z" fill="#d64b45"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="15" markerHeight="15" refX="13" refY="7.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M 0 1 L 14 7.5 L 0 14 z" fill="#367a12"/>
+    </marker>
+    <marker id="arrow-green-small" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#7fa75a"/>
+    </marker>
+    <linearGradient id="heatLegend" x1="0" x2="1">
+      <stop offset="0" stop-color="#c94639"/>
+      <stop offset="0.28" stop-color="#e2bf4a"/>
+      <stop offset="0.62" stop-color="#79aa38"/>
+      <stop offset="1" stop-color="#1f7a30"/>
+    </linearGradient>
+  </defs>
+
+  <rect class="bg" width="1500" height="920"/>
+  <text class="ink" x="70" y="76" font-size="42" font-weight="800">风角、帆角与船获得的前向力量</text>
+  <text class="muted" x="70" y="112" font-size="20">横轴是船头与来风方向的夹角；纵轴是帆离船身中线的角度。绿色越深，船获得的向前力量越大。</text>
+
+  <rect class="panel" x="60" y="150" width="860" height="650" rx="18"/>
+  <text class="label" x="95" y="196" font-size="27">前向力量热力图</text>
+  <text class="muted small" x="95" y="225">顶风死角没有推进；横风附近最强；正顺风稳定但不一定最高效。</text>
+
+  <g transform="translate(110 285)">
+    <rect class="danger" x="0" y="0" width="123.3" height="360"/>
+    <text class="muted tiny" x="16" y="-14">顶风死角</text>
+    <text class="muted tiny" x="555" y="-14">最佳区域</text>
+    <line class="axis" x1="0" y1="360" x2="720" y2="360"/>
+    <line class="axis" x1="0" y1="0" x2="0" y2="360"/>
+    <g>
+      <line class="grid" x1="0" y1="0" x2="720" y2="0"/>
+      <line class="grid" x1="0" y1="90" x2="720" y2="90"/>
+      <line class="grid" x1="0" y1="180" x2="720" y2="180"/>
+      <line class="grid" x1="0" y1="270" x2="720" y2="270"/>
+      <line class="grid" x1="144" y1="0" x2="144" y2="360"/>
+      <line class="grid" x1="288" y1="0" x2="288" y2="360"/>
+      <line class="grid" x1="432" y1="0" x2="432" y2="360"/>
+      <line class="grid" x1="576" y1="0" x2="576" y2="360"/>
+      <line class="grid" x1="720" y1="0" x2="720" y2="360"/>
+    </g>
+
+    <!-- coarse heat map: x = relative wind angle, y = sail angle -->
+    <g opacity="0.96">
+      <rect x="0" y="320" width="80" height="40" fill="#c94639"/><rect x="80" y="320" width="80" height="40" fill="#d0713e"/><rect x="160" y="320" width="80" height="40" fill="#d8a243"/><rect x="240" y="320" width="80" height="40" fill="#d4bb42"/><rect x="320" y="320" width="80" height="40" fill="#a9b842"/><rect x="400" y="320" width="80" height="40" fill="#78a83b"/><rect x="480" y="320" width="80" height="40" fill="#4d9633"/><rect x="560" y="320" width="80" height="40" fill="#478c30"/><rect x="640" y="320" width="80" height="40" fill="#6f9738"/>
+      <rect x="0" y="280" width="80" height="40" fill="#c94639"/><rect x="80" y="280" width="80" height="40" fill="#d37d3e"/><rect x="160" y="280" width="80" height="40" fill="#dfbd45"/><rect x="240" y="280" width="80" height="40" fill="#c7c13f"/><rect x="320" y="280" width="80" height="40" fill="#83ad39"/><rect x="400" y="280" width="80" height="40" fill="#479731"/><rect x="480" y="280" width="80" height="40" fill="#227f2d"/><rect x="560" y="280" width="80" height="40" fill="#237a2b"/><rect x="640" y="280" width="80" height="40" fill="#4b8631"/>
+      <rect x="0" y="240" width="80" height="40" fill="#c94639"/><rect x="80" y="240" width="80" height="40" fill="#d88f41"/><rect x="160" y="240" width="80" height="40" fill="#e2c54a"/><rect x="240" y="240" width="80" height="40" fill="#9eb73e"/><rect x="320" y="240" width="80" height="40" fill="#4f9d34"/><rect x="400" y="240" width="80" height="40" fill="#207f2d"/><rect x="480" y="240" width="80" height="40" fill="#1c7029"/><rect x="560" y="240" width="80" height="40" fill="#29762b"/><rect x="640" y="240" width="80" height="40" fill="#728f37"/>
+      <rect x="0" y="200" width="80" height="40" fill="#c94639"/><rect x="80" y="200" width="80" height="40" fill="#dda545"/><rect x="160" y="200" width="80" height="40" fill="#d9c647"/><rect x="240" y="200" width="80" height="40" fill="#6aa63a"/><rect x="320" y="200" width="80" height="40" fill="#267f2e"/><rect x="400" y="200" width="80" height="40" fill="#20752a"/><rect x="480" y="200" width="80" height="40" fill="#437d30"/><rect x="560" y="200" width="80" height="40" fill="#89953b"/><rect x="640" y="200" width="80" height="40" fill="#c0a443"/>
+      <rect x="0" y="160" width="80" height="40" fill="#c94639"/><rect x="80" y="160" width="80" height="40" fill="#e0b749"/><rect x="160" y="160" width="80" height="40" fill="#b6bf43"/><rect x="240" y="160" width="80" height="40" fill="#3f9632"/><rect x="320" y="160" width="80" height="40" fill="#20772b"/><rect x="400" y="160" width="80" height="40" fill="#3c7b2e"/><rect x="480" y="160" width="80" height="40" fill="#87923a"/><rect x="560" y="160" width="80" height="40" fill="#c5a344"/><rect x="640" y="160" width="80" height="40" fill="#d27b3e"/>
+      <rect x="0" y="120" width="80" height="40" fill="#c94639"/><rect x="80" y="120" width="80" height="40" fill="#dcb348"/><rect x="160" y="120" width="80" height="40" fill="#7fae3d"/><rect x="240" y="120" width="80" height="40" fill="#287f2f"/><rect x="320" y="120" width="80" height="40" fill="#3c7a2d"/><rect x="400" y="120" width="80" height="40" fill="#819039"/><rect x="480" y="120" width="80" height="40" fill="#c1a242"/><rect x="560" y="120" width="80" height="40" fill="#d57d3e"/><rect x="640" y="120" width="80" height="40" fill="#ca4d39"/>
+      <rect x="0" y="80" width="80" height="40" fill="#c94639"/><rect x="80" y="80" width="80" height="40" fill="#c7b946"/><rect x="160" y="80" width="80" height="40" fill="#4e9e35"/><rect x="240" y="80" width="80" height="40" fill="#2a792d"/><rect x="320" y="80" width="80" height="40" fill="#7e8e38"/><rect x="400" y="80" width="80" height="40" fill="#c0a142"/><rect x="480" y="80" width="80" height="40" fill="#d77f3e"/><rect x="560" y="80" width="80" height="40" fill="#c94c39"/><rect x="640" y="80" width="80" height="40" fill="#c94639"/>
+      <rect x="0" y="40" width="80" height="40" fill="#c94639"/><rect x="80" y="40" width="80" height="40" fill="#9fb741"/><rect x="160" y="40" width="80" height="40" fill="#2e832f"/><rect x="240" y="40" width="80" height="40" fill="#789239"/><rect x="320" y="40" width="80" height="40" fill="#c0a142"/><rect x="400" y="40" width="80" height="40" fill="#d77f3e"/><rect x="480" y="40" width="80" height="40" fill="#c94c39"/><rect x="560" y="40" width="80" height="40" fill="#c94639"/><rect x="640" y="40" width="80" height="40" fill="#c94639"/>
+      <rect x="0" y="0" width="80" height="40" fill="#c94639"/><rect x="80" y="0" width="80" height="40" fill="#738f38"/><rect x="160" y="0" width="80" height="40" fill="#6e8e36"/><rect x="240" y="0" width="80" height="40" fill="#b59f40"/><rect x="320" y="0" width="80" height="40" fill="#d27b3e"/><rect x="400" y="0" width="80" height="40" fill="#c94c39"/><rect x="480" y="0" width="80" height="40" fill="#c94639"/><rect x="560" y="0" width="80" height="40" fill="#c94639"/><rect x="640" y="0" width="80" height="40" fill="#c94639"/>
+    </g>
+
+    <path class="curve2" d="M 140 320 C 225 270, 300 225, 360 180 C 455 110, 560 50, 645 40"/>
+    <text class="label tiny" x="500" y="76">最佳帆角线</text>
+
+    <text class="muted tiny" x="-46" y="365">0°</text>
+    <text class="muted tiny" x="-58" y="275">22°</text>
+    <text class="muted tiny" x="-58" y="185">45°</text>
+    <text class="muted tiny" x="-58" y="95">67°</text>
+    <text class="muted tiny" x="-58" y="8">90°</text>
+    <text class="label small" x="-78" y="-35" transform="rotate(-90 -78 -35)">帆角：收紧 → 放开</text>
+
+    <text class="muted tiny" x="-8" y="392">0°</text>
+    <text class="muted tiny" x="132" y="392">35°</text>
+    <text class="muted tiny" x="276" y="392">70°</text>
+    <text class="muted tiny" x="418" y="392">105°</text>
+    <text class="muted tiny" x="562" y="392">140°</text>
+    <text class="muted tiny" x="700" y="392">180°</text>
+    <text class="label small" x="245" y="428">相对风角：船头与来风方向的夹角</text>
+  </g>
+
+  <g transform="translate(110 735)">
+    <rect x="0" y="0" width="300" height="18" rx="9" fill="url(#heatLegend)"/>
+    <text class="muted tiny" x="0" y="48">弱 / 失速</text>
+    <text class="muted tiny" x="116" y="48">中等</text>
+    <text class="muted tiny" x="240" y="48">强推进</text>
+  </g>
+
+  <rect class="note" x="445" y="705" width="430" height="64" rx="12"/>
+  <text class="ink tiny" x="468" y="733" font-weight="700">读图规则：同一风角下，帆角越接近蓝色最佳线，</text>
+  <text class="ink tiny" x="468" y="757" font-weight="700">船获得的前向力量越大。</text>
+
+  <rect class="panel" x="955" y="150" width="485" height="650" rx="18"/>
+  <text class="label" x="990" y="196" font-size="27">典型航况</text>
+  <text class="muted small" x="990" y="225">红箭头为风吹来方向，绿箭头为船获得的前向力量。</text>
+
+  <g transform="translate(995 262)">
+    <rect class="note" x="0" y="0" width="405" height="95" rx="12"/>
+    <text class="label small" x="20" y="32">中等模式的简化规则</text>
+    <text class="muted tiny" x="20" y="60">最佳帆角 ≈ 相对风角的一半；顶风区不给推进。</text>
+    <text class="muted tiny" x="20" y="82">这不是真实帆船空气动力学，而是给游戏教学用的可读模型。</text>
+  </g>
+
+  <g transform="translate(1000 390)">
+    <text class="label small" x="0" y="0">1. 顶风 0-35°：无推进</text>
+    <g transform="translate(58 18) scale(.72)">
+      <path class="boat" d="M 42 12 L 70 80 L 42 120 L 14 80 Z"/>
+      <path class="bow" d="M 42 12 L 57 48 L 27 48 Z"/>
+      <line class="mast" x1="42" y1="20" x2="42" y2="98"/>
+      <path class="sail" d="M 46 22 L 67 76 L 46 76 Z"/>
+      <line class="wind" x1="42" y1="-18" x2="42" y2="16"/>
+    </g>
+    <rect class="bar-bg" x="165" y="54" width="190" height="12" rx="6"/>
+    <rect class="bar-low" x="165" y="54" width="6" height="12" rx="6"/>
+    <text class="muted tiny" x="165" y="92">前向力量 0%</text>
+  </g>
+
+  <line x1="990" y1="510" x2="1405" y2="510" stroke="#e4dccd" stroke-width="1"/>
+
+  <g transform="translate(1000 545)">
+    <text class="label small" x="0" y="0">2. 正横风 90°：推进最强</text>
+    <g transform="translate(58 18) scale(.72)">
+      <path class="boat" d="M 42 12 L 70 80 L 42 120 L 14 80 Z"/>
+      <path class="bow" d="M 42 12 L 57 48 L 27 48 Z"/>
+      <line class="mast" x1="42" y1="20" x2="42" y2="98"/>
+      <path class="sail" d="M 38 28 L -16 80 L 38 80 Z"/>
+      <line class="wind" x1="140" y1="68" x2="84" y2="68"/>
+      <line class="force" x1="42" y1="96" x2="42" y2="18"/>
+    </g>
+    <rect class="bar-bg" x="165" y="54" width="190" height="12" rx="6"/>
+    <rect class="bar-fill" x="165" y="54" width="190" height="12" rx="6"/>
+    <text class="muted tiny" x="165" y="92">前向力量 100%</text>
+  </g>
+
+  <line x1="990" y1="665" x2="1405" y2="665" stroke="#e4dccd" stroke-width="1"/>
+
+  <g transform="translate(1000 700)">
+    <text class="label small" x="0" y="0">3. 正顺风 175-180°：稳定但较弱</text>
+    <g transform="translate(58 18) scale(.72)">
+      <path class="boat" d="M 42 12 L 70 80 L 42 120 L 14 80 Z"/>
+      <path class="bow" d="M 42 12 L 57 48 L 27 48 Z"/>
+      <line class="mast" x1="42" y1="20" x2="42" y2="98"/>
+      <path class="sail" d="M 38 20 L 8 -20 L 38 -20 Z"/>
+      <line class="wind" x1="42" y1="124" x2="42" y2="102"/>
+      <line class="weakforce" x1="42" y1="96" x2="42" y2="48"/>
+    </g>
+    <rect class="bar-bg" x="165" y="54" width="190" height="12" rx="6"/>
+    <rect class="bar-fill" x="165" y="54" width="72" height="12" rx="6"/>
+    <text class="muted tiny" x="165" y="92">前向力量约 35-40%</text>
+  </g>
+
+  <g transform="translate(72 865)">
+    <text class="muted tiny" x="0" y="0">术语：相对风角 0° = 船头正对来风；90° = 风从侧面来；180° = 风从船尾来。帆角 0° = 帆贴近船身；90° = 帆完全放开。</text>
+    <text class="muted tiny" x="0" y="28">游戏规则可调：如果希望顺风更强，可以提高 170°-180° 区间的风力利用；如果希望抢风更难，可以扩大顶风死角。</text>
+  </g>
+</svg>

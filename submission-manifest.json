@@ -1,0 +1,20 @@
+{
+  "group": "Ian",
+  "projectTitle": "Sailing",
+  "domain": "Sailing",
+  "entryPage": "index.html",
+  "gamePage": "game.html",
+  "aiAgent": "Workbuddy",
+  "submissionDate": "2026-07-12",
+  "knownIssues": [
+    "assets/system-graph.png 与 preview.png 当前为占位图，需导出真实系统图与 16:9 游戏截图",
+    "Level 2（顶风限时）与 Level 3（礁石迷宫）难度尚未经实玩校准",
+    "尚未执行离线无网络测试与 1920x1080 展览布局最终测试",
+    "‘计划航线 vs 实际航迹’对比反馈未实现（强化路线漂移学习的可选增强）"
+  ],
+  "externalDependencies": [
+    "three (r165) 已本地化至 assets/vendor/three.module.js，经 importmap 加载，无需联网、无需 npm install"
+  ],
+  "exhibitionTestedAt": "1920x1080",
+  "publicDisplayConsent": "ask the student: yes / anonymous only / no"
+}

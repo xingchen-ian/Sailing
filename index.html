@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sailing — 读懂风，才能航行</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="assets/i18n.js"></script>
+</head>
+<body>
+  <!-- 导航 -->
+  <nav class="site-nav">
+    <div class="brand"><span class="dot"></span> Sailing</div>
+    <div class="links">
+      <a href="#home" class="active" data-i18n="nav.home">首页</a>
+      <a href="#idea" data-i18n="nav.idea">游戏概念</a>
+      <a href="#domain" data-i18n="nav.domain">领域知识</a>
+      <a href="#system" data-i18n="nav.system">系统设计</a>
+      <a href="process.html" data-i18n="nav.process">开发过程</a>
+      <a href="rock-editor.html" data-i18n="nav.editor">礁石编辑器</a>
+      <a href="game.html" class="cta" data-i18n="nav.play">▶ 开始游戏</a>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-switch active" data-lang="zh" data-i18n="lang.zh">中</button>
+      <button class="lang-switch" data-lang="en" data-i18n="lang.en">EN</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="home" class="hero wrap">
+    <div class="eyebrow" data-i18n="hero.eyebrow">First Playable Web Game · 来自生活的游戏设计</div>
+    <h1 data-i18n="hero.title">读懂风，才能航行</h1>
+    <p data-i18n="hero.desc">一艘小帆船不会朝你指的方向直行。它取决于风向、帆角、船向与速度——这正是这个游戏要让你“体验”的核心转变。</p>
+    <div class="actions">
+      <a href="game.html" class="btn primary" data-i18n="hero.btnPlay">▶ 立刻试玩</a>
+      <a href="#system" class="btn ghost" data-i18n="hero.btnSystem">查看系统设计</a>
+    </div>
+  </header>
+
+  <!-- 游戏概念 -->
+  <section id="idea" class="section wrap">
+    <div class="eyebrow">Game Idea</div>
+    <h2 class="section-title" data-i18n="idea.title">游戏概念</h2>
+    <p class="lead" data-i18n="idea.lead">玩家驾驶一艘小帆船，在变化的风场中前往目标浮标。关键张力在于：风是唯一的动力，但风不总在你想去的方向。</p>
+    <div class="grid cols-3" style="margin-top:24px;">
+      <div class="card">
+        <span class="tag" data-i18n="idea.goal.tag">玩家目标</span>
+        <h3 data-i18n="idea.goal.title">抵达目标</h3>
+        <p data-i18n="idea.goal.desc">在限时内把船开到绿色浮标处，同时保持船体稳定、避开礁石与危险区。</p>
+      </div>
+      <div class="card">
+        <span class="tag" data-i18n="idea.control.tag">核心操作</span>
+        <h3 data-i18n="idea.control.title">转舵 · 调帆</h3>
+        <p data-i18n="idea.control.desc">用 A/D 转舵、W/S 调帆，读懂风的来向并随时调整，让帆吃到最有效的风。</p>
+      </div>
+      <div class="card">
+        <span class="tag" data-i18n="idea.shift.tag">学习转变</span>
+        <h3 data-i18n="idea.shift.title">从“指向”到“读风”</h3>
+        <p data-i18n="idea.shift.desc">新手以为朝目标开就行；真正的航行是与风对话——读懂风、调好帆、走对路。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 领域知识 -->
+  <section id="domain" class="section wrap">
+    <div class="eyebrow">Domain Knowledge</div>
+    <h2 class="section-title" data-i18n="domain.title">领域知识：真实航海</h2>
+    <p class="lead" data-i18n="domain.lead">我曾参加一次初学者帆船课，意识到船并不会简单地去我想去的地方。它取决于风、帆角、船角和速度。</p>
+    <div class="grid cols-2" style="margin-top:24px;">
+      <div class="card">
+        <span class="tag" data-i18n="domain.novice.tag">新手误解</span>
+        <h3 data-i18n="domain.novice.title">“把船指向目标就能到达”</h3>
+        <p data-i18n="domain.novice.desc">初学者把船开得离风太近、忘记调帆角，或在需要之字形航线时试图直行。结果船失速、帆拍打、路线漂离目标。</p>
+      </div>
+      <div class="card">
+        <span class="tag" data-i18n="domain.expert.tag">专家判断</span>
+        <h3 data-i18n="domain.expert.title">“读风并随之调整”</h3>
+        <p data-i18n="domain.expert.desc">有经验的船员知道：航行意味着读取风，并据此调整船、帆与航线。顶风时走之字形（tack），顺风时放开帆，正侧风最快但横倾最猛。</p>
+      </div>
+    </div>
+
+    <div class="shift">
+      <div class="col novice">
+        <h4 data-i18n="domain.noviceModel">新手的心智模型</h4>
+        <p data-i18n="domain.noviceText">“帆船 = 开车。我指向哪，船就去哪。只要舵打对，就能到目标。”</p>
+      </div>
+      <div class="arrow">➜</div>
+      <div class="col expert">
+        <h4 data-i18n="domain.expertModel">专家的心智模型</h4>
+        <p data-i18n="domain.expertText">“帆船 = 与风谈判。我看风向，决定帆角与航线，让风的力沿着我想要的方向累积。”</p>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:18px;"><span data-i18n="domain.quote">这个系统图的核心学习转变：</span><strong style="color:var(--gold)">Beginners think sailing means steering toward the target; experts know sailing means reading the wind and adjusting the boat, sail, and route in relation to it.</strong></p>
+
+    <div class="worldview-callout" style="margin-top:22px;padding:18px 20px;border-left:3px solid var(--gold);background:rgba(255,255,255,0.03);border-radius:8px;">
+      <p style="margin:0 0 8px;font-weight:600;font-size:16px;">延伸：晚明航海世界观调研</p>
+      <p class="muted" style="margin:0 0 14px;">把这套帆船游戏的「读风 / 调帆 / 航线」机制底座，放进晚明全球海贸的历史文化语境——贸易潮流、白银机制、国内阶层、王朝危机。这是本游戏在世界观层面的拓展。</p>
+      <a href="worldview/index.html" class="btn ghost">进入晚明航海世界观 →</a>
+    </div>
+  </section>
+
+  <!-- 系统设计 -->
+  <section id="system" class="section wrap">
+    <div class="eyebrow">System Design</div>
+    <h2 class="section-title" data-i18n="system.title">系统设计</h2>
+    <p class="lead" data-i18n="system.lead">游戏系统由“环境数据 / 玩家可控数据 / 系统计算结果 / 反馈翻译 / 胜负条件 / 挑战预设”六部分构成。下面给出核心数据流与关卡预设。</p>
+
+    <div class="graph-frame">
+      <img src="assets/system-graph.png" alt="Sailing 游戏系统与关卡图" onerror="this.style.display='none';this.parentNode.nextElementSibling.style.display='block';" />
+      <div class="graph-note" style="display:none;padding:18px;">⚠️ 系统图资源 <code>assets/system-graph.png</code> 尚未生成——请在完成游戏后导出 system graph 放入该路径。</div>
+    </div>
+    <div class="graph-note" data-i18n="system.caption">系统图：玩家输入（转舵 / 调帆 / 选路 / 转向时机）→ 风场 + 水流 + 礁石 → 船速 / 漂移 / 稳定 / 距离 / 碰撞风险 → 反馈（帆拍、尾迹、横倾、航线漂离、风向变化）→ 胜负判定。</div>
+
+    <h3 style="margin-top:28px;font-size:20px;" data-i18n="system.dataTitle">核心数据与关卡预设</h3>
+    <table class="data">
+      <thead>
+        <tr><th data-i18n="system.table.cat">类别</th><th data-i18n="system.table.field">字段</th><th data-i18n="system.table.desc">说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td data-i18n="system.row.env">环境数据</td><td><code>windDir / windSpeed</code></td><td data-i18n="system.desc.wind">风的来向与风速（低频漂移）</td></tr>
+        <tr><td data-i18n="system.row.env">环境数据</td><td><code>currentDir / currentSpeed</code></td><td data-i18n="system.desc.current">水流方向与速度（使船漂移）</td></tr>
+        <tr><td data-i18n="system.row.env">环境数据</td><td><code>rockPositions</code></td><td data-i18n="system.desc.rocks">礁石坐标（碰撞=扣血/失败）</td></tr>
+        <tr><td data-i18n="system.row.env">环境数据</td><td><code>targetPos / gameTime / boatHealth</code></td><td data-i18n="system.desc.target">终点、剩余时间、船体血量</td></tr>
+        <tr><td data-i18n="system.row.ctrl">玩家可控</td><td><code>boatDir / sailAngle / route / turnTiming</code></td><td data-i18n="system.desc.ctrl">船向、帆角、航线选择、转向时机</td></tr>
+        <tr><td data-i18n="system.row.sim">系统计算</td><td><code>speed / drift / stability / distToTarget / collisionRisk</code></td><td data-i18n="system.desc.sim">船速、侧漂、稳定、到目标距离、碰撞风险</td></tr>
+        <tr><td data-i18n="system.row.feedback">反馈翻译</td><td data-i18n="system.desc.feedback">帆拍→帆角低效；尾迹变短→减速；航线漂离→风/流推偏；横倾强→稳定下降</td><td data-i18n="system.desc.feedback2">把不可见数据变成可读反馈</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:28px;font-size:20px;" data-i18n="system.challengeTitle">挑战预设（Challenge Presets）</h3>
+    <div class="grid cols-3" style="margin-top:8px;">
+      <div class="card">
+        <span class="tag" data-i18n="system.lv1.tag">Level 1</span>
+        <h3 data-i18n="system.lv1.title">横风初航</h3>
+        <p data-i18n="system.lv1.desc">横风（crosswind）、无水流、无礁石。<strong>目标：</strong>到达终点。熟悉转舵与调帆的基本反馈。</p>
+      </div>
+      <div class="card">
+        <span class="tag" data-i18n="system.lv2.tag">Level 2</span>
+        <h3 data-i18n="system.lv2.title">顶风限时</h3>
+        <p data-i18n="system.lv2.desc">顶风（headwind）、限时到达。<strong>挑战：</strong>无法直行，必须走之字形（tack）抢风前进。</p>
+      </div>
+      <div class="card">
+        <span class="tag" data-i18n="system.lv3.tag">Level 3</span>
+        <h3 data-i18n="system.lv3.title">礁石迷宫</h3>
+        <p data-i18n="system.lv3.desc">横风、限时、路径上 &gt;5 块礁石。<strong>挑战：</strong>在读懂风的同时规划避障航线。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 开发过程入口 -->
+  <section class="section wrap" style="text-align:center;">
+    <div class="eyebrow" data-i18n="processEntry.eyebrow">Development Process</div>
+    <h2 class="section-title" style="justify-content:center;" data-i18n="processEntry.title">人机协作开发过程</h2>
+    <p class="lead" style="margin:0 auto 22px;" data-i18n="processEntry.lead">本项目通过“原始交互日志 + 阶段反思”记录每一次有意义的人机协作。点击查看完整时间线。</p>
+    <a href="process.html" class="btn primary" data-i18n="processEntry.btn">查看开发时间线 →</a>
+  </section>
+
+  <footer class="site-foot">
+    <p data-i18n="footer.line1">Sailing · First Playable Web Game · 使用 Three.js 构建（本地离线运行）· AI Agent: WorkBuddy</p>
+    <p><a href="game.html" data-i18n="nav.play">开始游戏</a> · <a href="process.html" data-i18n="nav.process">开发过程</a> · <a href="rock-editor.html">礁石编辑器</a> · <a href="README.md">README</a></p>
+  </footer>
+</body>
+</html>

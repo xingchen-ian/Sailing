@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="rou.001">航线网络 · 晚明海上贸易世界观</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a data-i18n="rou.002" href="../index.html" style="display:inline-block;margin:12px 16px 0;font-size:14px;color:#b3842f;text-decoration:none;font-weight:600;">← 返回帆船游戏主站（Sailing）</a>
+    <header class="topbar">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <p data-i18n="rou.003" class="eyebrow">1571-1644 · 航线网络</p>
+          <h1 data-i18n="rou.004">空间、航道与贸易流</h1>
+        </div>
+      </a>
+      <nav class="nav" aria-label="页面章节">
+        <a data-i18n="rou.005" href="./index.html">世界观首页</a>
+        <a data-i18n="rou.006" href="./geography.html">地理资料库</a>
+        <a data-i18n="rou.007" href="./ships.html">中式帆船</a>
+        <a data-i18n="rou.008" href="./gameplay.html">玩法设计</a>
+        <a data-i18n="rou.009" href="#spanish-network">西班牙网络</a>
+        <a data-i18n="rou.010" href="#ships">船只</a>
+        <a data-i18n="rou.011" href="#sailing-control">风帆控制</a>
+        <a data-i18n="rou.012" href="#spatial-change">空间变化</a>
+        <a data-i18n="rou.013" href="#route-cards">航线卡</a>
+            <div class="lang-switcher">
+        <button type="button" class="lang-switch active" data-lang="zh">中</button>
+        <button type="button" class="lang-switch" data-lang="en">EN</button>
+      </div>
+    </nav>
+    </header>
+
+    <main>
+      <section class="subpage-hero routes-hero">
+        <div class="subpage-title">
+          <p data-i18n="rou.014" class="kicker">西班牙海上贸易</p>
+          <h2 data-i18n="rou.015">它不是一条航线，而是大西洋、太平洋和美洲陆路转运拼成的帝国物流系统。</h2>
+          <p data-i18n="rou.016">
+            在晚明对应的 16-17 世纪，西班牙的海上贸易以美洲白银为核心，依靠船队护航、港口垄断、殖民税收和跨洋转运，把塞维利亚/加的斯、加勒比、墨西哥、秘鲁、马尼拉和中国商品连接起来。
+          </p>
+        </div>
+        <div class="subpage-panel">
+          <h3 data-i18n="rou.017">一句话定位</h3>
+          <p data-i18n="rou.018">
+            西班牙掌握的是“银矿-船队-殖民港-太平洋大帆船”的跨洲通道；它强在航线制度和白银动员，弱在本土制造、走私控制和对亚洲货源的直接掌控。
+          </p>
+        </div>
+      </section>
+
+      <section id="spanish-network" class="section-band">
+        <div class="section-heading">
+          <p data-i18n="rou.019" class="kicker">空间结构</p>
+          <h2 data-i18n="rou.020">西班牙贸易网络可以拆成三段。</h2>
+        </div>
+        <div class="network-diagram" aria-label="西班牙海上贸易网络示意">
+          <article>
+            <span data-i18n="rou.021">欧洲端</span>
+            <strong data-i18n="rou.022">塞维利亚 / 加的斯</strong>
+            <p data-i18n="rou.023">登记、征税、船队组织、欧洲货物输出。</p>
+          </article>
+          <div data-i18n="rou.024" class="network-arrow">Atlantic</div>
+          <article>
+            <span data-i18n="rou.025">美洲端</span>
+            <strong data-i18n="rou.026">韦拉克鲁斯 / 卡塔赫纳 / 波托韦洛 / 哈瓦那</strong>
+            <p data-i18n="rou.027">白银、胭脂红、糖、烟草、皮革与亚洲货物转运。</p>
+          </article>
+          <div data-i18n="rou.028" class="network-arrow">Overland</div>
+          <article>
+            <span data-i18n="rou.029">太平洋端</span>
+            <strong data-i18n="rou.030">阿卡普尔科 - 马尼拉</strong>
+            <p data-i18n="rou.031">美洲白银换取中国丝绸、瓷器和亚洲商品。</p>
+          </article>
+        </div>
+
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <span data-i18n="rou.032" class="tag fact">资料</span>
+            <h3 data-i18n="rou.033">大西洋：护航船队制度</h3>
+            <p data-i18n="rou.034">
+              西班牙在 16 世纪中后期形成西印度船队制度，从塞维利亚出发，经加那利群岛横渡大西洋，分别前往新西班牙和 Tierra Firme 区域，再在哈瓦那集结返航。
+            </p>
+            <p data-i18n="rou.035" class="source-note">来源：Spanish treasure fleet；Casa de Contratación。</p>
+          </article>
+          <article class="evidence-card">
+            <span data-i18n="rou.036" class="tag fact">资料</span>
+            <h3 data-i18n="rou.037">太平洋：马尼拉大帆船</h3>
+            <p data-i18n="rou.038">
+              1565 年后，马尼拉-阿卡普尔科航线成为长期跨太平洋航线。阿卡普尔科带来白银，马尼拉装载中国和亚洲商品，通常每年一至两次往返。
+            </p>
+            <p data-i18n="rou.039" class="source-note">来源：Manila galleon；Flynn & Giraldez 1995。</p>
+          </article>
+          <article class="evidence-card">
+            <span data-i18n="rou.040" class="tag fact">资料</span>
+            <h3 data-i18n="rou.041">美洲陆路：两洋之间的接缝</h3>
+            <p data-i18n="rou.042">
+              亚洲货物到阿卡普尔科后，经墨西哥城转运到韦拉克鲁斯，再装上大西洋船队。秘鲁白银则经利马/卡亚俄、巴拿马地峡和波托韦洛进入加勒比。
+            </p>
+            <p data-i18n="rou.043" class="source-note">来源：Spanish treasure fleet；Manila galleon。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="ships" class="section-band alt">
+        <div class="section-heading">
+          <p data-i18n="rou.044" class="kicker">船只与船队</p>
+          <h2 data-i18n="rou.045">“马尼拉大帆船”首先是一条贸易制度和航线，其次才指服务这条航线的大型远洋船。</h2>
+        </div>
+        <div class="ship-grid">
+          <article class="ship-card major">
+            <figure class="ship-figure wide">
+              <img src="./assets/ships/manila-galleon-boxer-codex.jpg" alt="约 1590 年 Boxer Codex 中描绘的西班牙船只与查莫罗人接触场景" />
+              <figcaption data-i18n="rou.046">Boxer Codex 图像，常用于说明马尼拉大帆船时代的西班牙太平洋航行场景。</figcaption>
+            </figure>
+            <span data-i18n="rou.047" class="tag fact">资料</span>
+            <h3 data-i18n="rou.048">马尼拉大帆船 / Manila Galleon</h3>
+            <p data-i18n="rou.049">
+              “马尼拉大帆船”既指 1565-1815 年马尼拉与阿卡普尔科之间的跨太平洋贸易航线，也指跑这条航线的大型西班牙贸易船。西班牙语中也称 Nao de China 或 Galeón de Acapulco。
+            </p>
+            <p data-i18n="rou.050">
+              它不是严格单一型号，而是一类为了超长距离、高价值货物和少班次贸易而建造的大型远洋武装商船。因航程长、利润高、补给需求大，马尼拉航线倾向使用尽可能大的船，部分船只在菲律宾船厂建造，使用菲律宾硬木，并在 Cavite 等地修造、装配。
+            </p>
+            <p data-i18n="rou.051" class="source-note">
+              来源：Manila galleon 条目；galleon 条目。判断：把它理解为“航线制度 + 大型武装商船类别”，比理解成单一标准船型更准确。
+            </p>
+          </article>
+
+          <article class="ship-card">
+            <figure class="ship-figure">
+              <img src="./assets/ships/spanish-galleon.jpg" alt="西班牙大帆船模型" />
+              <figcaption data-i18n="rou.052">西班牙大帆船模型图，用作 galleon 船型示意。</figcaption>
+            </figure>
+            <span data-i18n="rou.053" class="tag fact">资料</span>
+            <h3 data-i18n="rou.054">西班牙大帆船 / Galleon</h3>
+            <p data-i18n="rou.055">
+              16 世纪发展出的多桅、多层甲板远洋帆船，兼具载货和武装能力。它通常比早期 carrack 更长、更低、更窄，风阻更低，稳定性和操控性更好，是西班牙海上帝国的重要船型。
+            </p>
+            <p data-i18n="rou.056" class="source-note">来源：Galleon 条目；Spanish treasure fleet 条目。</p>
+          </article>
+
+          <article class="ship-card">
+            <figure class="ship-figure">
+              <img src="./assets/ships/carrack.jpg" alt="岩岸外的葡萄牙克拉克船绘画" />
+              <figcaption data-i18n="rou.057">葡萄牙克拉克船绘画，用于说明 carrack / nao 的早期远洋大船形态。</figcaption>
+            </figure>
+            <span data-i18n="rou.058" class="tag fact">资料</span>
+            <h3 data-i18n="rou.059">克拉克船 / Carrack / Nao</h3>
+            <p data-i18n="rou.060">
+              Carrack 是 15-16 世纪葡萄牙和西班牙常用的大型远洋商船，适合长航程和大货量，后来逐渐被 galleon 取代。Nao 在伊比利亚语境中常泛指大型远洋船，容易和具体船型混用。
+            </p>
+            <p data-i18n="rou.061" class="source-note">来源：Carrack 条目；Manila galleon 中 Nao de China 的称呼。</p>
+          </article>
+
+          <article class="ship-card">
+            <figure class="ship-figure">
+              <img src="./assets/ships/spanish-trade-routes.png" alt="16 世纪葡萄牙和西班牙贸易路线地图" />
+              <figcaption data-i18n="rou.062">16 世纪葡萄牙与西班牙贸易路线图，用作船队制度的空间示意。</figcaption>
+            </figure>
+            <span data-i18n="rou.063" class="tag fact">资料</span>
+            <h3 data-i18n="rou.064">西印度船队 / Flota</h3>
+            <p data-i18n="rou.065">
+              大西洋方向的“西班牙宝船队”不是某一种船，而是护航船队制度。每年或定期由多艘商船、武装商船和护航舰组成，前往韦拉克鲁斯、卡塔赫纳、波托韦洛等港口，再在哈瓦那集结返航。
+            </p>
+            <p data-i18n="rou.066" class="source-note">来源：Spanish treasure fleet 条目。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="sailing-control" class="section-band sailing-control">
+        <div class="section-heading">
+          <p data-i18n="rou.067" class="kicker">中等操控模式</p>
+          <h2 data-i18n="rou.068">玩家控制船舵和帆角，帆面积暂时固定。</h2>
+        </div>
+        <div class="sailing-layout">
+          <article class="sailing-principle">
+            <span data-i18n="rou.069" class="tag inference">设计规则</span>
+            <h3 data-i18n="rou.070">“收帆 / 放帆”在这里指调整帆角</h3>
+            <p data-i18n="rou.071">
+              收帆是把帆拉近船的中线，适合迎风斜驶；放帆是让帆向外打开，适合横风和顺风。它不是缩小或扩大帆面积，帆面积可以以后作为强风、暴风和船只升级系统再加入。
+            </p>
+            <div class="sail-angle-demo" aria-label="收帆与放帆示意">
+              <div class="demo-ship tight">
+                <span class="mast"></span>
+                <span class="sail"></span>
+                <strong data-i18n="rou.072">收帆</strong>
+              </div>
+              <div class="demo-ship loose">
+                <span class="mast"></span>
+                <span class="sail"></span>
+                <strong data-i18n="rou.073">放帆</strong>
+              </div>
+            </div>
+          </article>
+
+          <article class="sailing-principle">
+            <span data-i18n="rou.074" class="tag inference">玩家反馈</span>
+            <h3 data-i18n="rou.075">帆角越接近最佳值，船越快</h3>
+            <p data-i18n="rou.076">
+              玩家看风向箭头和帆的状态来判断是否调对。帆太紧或太松时，帆面抖动、速度下降；帆角合适时，帆鼓起，船获得稳定推进力。
+            </p>
+            <p data-i18n="rou.077" class="game-note">
+              推荐 UI：风向箭头 + 帆角滑条 + 当前航速。滑条文字用“收帆 / 放帆”，内部变量用 sailAngle。
+            </p>
+          </article>
+        </div>
+
+        <div class="sail-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-i18n="rou.078">船头与来风夹角</th>
+                <th data-i18n="rou.079">航行状态</th>
+                <th data-i18n="rou.080">玩家操作</th>
+                <th data-i18n="rou.081">游戏效果</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="rou.082">0-35 度</td>
+                <td data-i18n="rou.083">顶风禁航区</td>
+                <td data-i18n="rou.084">转向，离开正顶风</td>
+                <td data-i18n="rou.085">推进力接近 0，帆会乱摆，船逐渐失速。</td>
+              </tr>
+              <tr>
+                <td data-i18n="rou.086">35-60 度</td>
+                <td data-i18n="rou.087">迎风斜驶</td>
+                <td data-i18n="rou.088">明显收帆</td>
+                <td data-i18n="rou.089">可以逆风推进，但速度不高；适合抢风航行。</td>
+              </tr>
+              <tr>
+                <td data-i18n="rou.090">60-120 度</td>
+                <td data-i18n="rou.091">横风 / 斜横风</td>
+                <td data-i18n="rou.092">帆角中等打开</td>
+                <td data-i18n="rou.093">效率最高，适合让玩家感到“找到风了”。</td>
+              </tr>
+              <tr>
+                <td data-i18n="rou.094">120-170 度</td>
+                <td data-i18n="rou.095">顺风斜驶</td>
+                <td data-i18n="rou.096">继续放帆</td>
+                <td data-i18n="rou.097">推进稳定，操作容易，但未必比横风更快。</td>
+              </tr>
+              <tr>
+                <td data-i18n="rou.098">170-180 度</td>
+                <td data-i18n="rou.099">正顺风</td>
+                <td data-i18n="rou.100">大幅放帆</td>
+                <td data-i18n="rou.101">直观、稳定，适合新手；高阶玩法可让它略低于横风效率。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="route-card-grid control-cards">
+          <article class="route-card">
+            <span data-i18n="rou.102" class="tag inference">核心公式</span>
+            <h3 data-i18n="rou.103">推进力由风向效率和帆角匹配共同决定</h3>
+            <p data-i18n="rou.104">
+              如果船头与来风夹角小于 35 度，推进力为 0；否则用风速、风向效率和帆角匹配度相乘。帆角不合适时不要直接惩罚玩家失败，而是用抖帆和加速变慢提示他调整。
+            </p>
+          </article>
+          <article class="route-card">
+            <span data-i18n="rou.105" class="tag inference">抢风航行</span>
+            <h3 data-i18n="rou.106">目标在上风时，玩家需要之字形前进</h3>
+            <p data-i18n="rou.107">
+              船不能直冲逆风目标。玩家需要在来风左右两侧反复切换航向，每次保持 35-50 度左右的迎风角，通过更长路线逐渐接近上风方向。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="spatial-change" class="section-band">
+        <div class="section-heading">
+          <p data-i18n="rou.108" class="kicker">空间与航道变化</p>
+          <h2 data-i18n="rou.109">16-17 世纪的变化，是西班牙贸易从大西洋殖民物流扩展成跨太平洋全球链条。</h2>
+        </div>
+        <div class="change-list">
+          <article>
+            <strong data-i18n="rou.110">1503 起</strong>
+            <h3 data-i18n="rou.111">塞维利亚成为制度中心</h3>
+            <p data-i18n="rou.112">Casa de Contratación 负责登记、征税、飞行员训练、海图和贸易管理。贸易名义上高度集中，但实际走私和外国商人借名参与一直存在。</p>
+          </article>
+          <article>
+            <strong data-i18n="rou.113">1560s</strong>
+            <h3 data-i18n="rou.114">船队制度成型</h3>
+            <p data-i18n="rou.115">面对法国、英国、荷兰私掠和海盗威胁，西班牙把跨大西洋航运组织成护航船队，空间上形成“西班牙-加勒比-墨西哥/巴拿马-哈瓦那-西班牙”的闭环。</p>
+          </article>
+          <article>
+            <strong data-i18n="rou.116">1565-1571</strong>
+            <h3 data-i18n="rou.117">太平洋回航路线与马尼拉打开</h3>
+            <p data-i18n="rou.118">Urdaneta 的返航路线让菲律宾到墨西哥的回程稳定化；1571 年马尼拉建立后，西班牙获得连接中国商品和美洲白银的太平洋节点。</p>
+          </article>
+          <article>
+            <strong data-i18n="rou.119">1593 后</strong>
+            <h3 data-i18n="rou.120">官方限制与走私并存</h3>
+            <p data-i18n="rou.121">西班牙王室限制马尼拉大帆船数量，试图保护塞维利亚贸易垄断。但高利润使低报货值、夹带、地方私利和跨国商人参与持续存在。</p>
+          </article>
+          <article>
+            <strong data-i18n="rou.122">17 世纪</strong>
+            <h3 data-i18n="rou.123">竞争压力上升</h3>
+            <p data-i18n="rou.124">荷兰、英国和法国势力在加勒比、印度洋和东南亚扩张；西班牙仍控制银流主干，但航线安全、财政能力和贸易垄断都受到挑战。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="route-cards" class="section-band">
+        <div class="section-heading">
+          <p data-i18n="rou.125" class="kicker">可游戏化航线卡</p>
+          <h2 data-i18n="rou.126">西班牙网络适合被设计成高价值、低频率、高风险的远洋线路。</h2>
+        </div>
+        <div class="route-card-grid">
+          <article class="route-card">
+            <span data-i18n="rou.127" class="tag fact">航线</span>
+            <h3 data-i18n="rou.128">马尼拉 - 阿卡普尔科</h3>
+            <p data-i18n="rou.129">美洲白银向西，亚洲商品向东。周期长、风险高、收益大。</p>
+            <dl>
+              <dt data-i18n="rou.130">核心变量</dt>
+              <dd data-i18n="rou.131">季风、台风、船况、货舱容量、白银价格、殖民税费。</dd>
+              <dt data-i18n="rou.132">关键港口</dt>
+              <dd data-i18n="rou.133">马尼拉、Cavite、阿卡普尔科。</dd>
+            </dl>
+          </article>
+          <article class="route-card">
+            <span data-i18n="rou.134" class="tag fact">航线</span>
+            <h3 data-i18n="rou.135">阿卡普尔科 - 墨西哥城 - 韦拉克鲁斯</h3>
+            <p data-i18n="rou.136">不是海路，但决定亚洲货物能否进入大西洋世界。</p>
+            <dl>
+              <dt data-i18n="rou.137">核心变量</dt>
+              <dd data-i18n="rou.138">骡队、关税、盗匪、仓储、殖民官僚订单。</dd>
+              <dt data-i18n="rou.139">关键港口</dt>
+              <dd data-i18n="rou.140">阿卡普尔科、墨西哥城、韦拉克鲁斯。</dd>
+            </dl>
+          </article>
+          <article class="route-card">
+            <span data-i18n="rou.141" class="tag fact">航线</span>
+            <h3 data-i18n="rou.142">塞维利亚/加的斯 - 韦拉克鲁斯 - 哈瓦那</h3>
+            <p data-i18n="rou.143">新西班牙船队承接欧洲货物、美洲白银和从太平洋转来的中国货。</p>
+            <dl>
+              <dt data-i18n="rou.144">核心变量</dt>
+              <dd data-i18n="rou.145">护航船队、私掠、飓风、王室征税、港口等待。</dd>
+              <dt data-i18n="rou.146">关键港口</dt>
+              <dd data-i18n="rou.147">塞维利亚、加的斯、韦拉克鲁斯、哈瓦那。</dd>
+            </dl>
+          </article>
+          <article class="route-card">
+            <span data-i18n="rou.148" class="tag fact">航线</span>
+            <h3 data-i18n="rou.149">秘鲁/波托西 - 巴拿马 - 波托韦洛</h3>
+            <p data-i18n="rou.150">南美白银经太平洋、陆路和加勒比港口进入大西洋船队。</p>
+            <dl>
+              <dt data-i18n="rou.151">核心变量</dt>
+              <dd data-i18n="rou.152">矿山产量、强制劳役、地峡运输、仓储和船队时刻。</dd>
+              <dt data-i18n="rou.153">关键港口</dt>
+              <dd data-i18n="rou.154">卡亚俄、巴拿马、波托韦洛、卡塔赫纳。</dd>
+            </dl>
+          </article>
+        </div>
+
+        <div class="explain-block">
+          <h3 data-i18n="rou.155">对晚明游戏的意义</h3>
+          <p data-i18n="rou.156">
+            西班牙网络不是直接统治中国海贸，而是向亚洲提供了巨量支付能力。马尼拉让中国商人能把货物卖给掌握美洲白银的西班牙殖民体系。对玩家来说，西班牙可以是“白银来源”和“远洋订单方”，但货源、船员、中介和本地贸易仍高度依赖中国、菲律宾和东南亚社群。
+          </p>
+          <p data-i18n="rou.157" class="source-note">
+            判断依据：马尼拉大帆船以美洲白银购买中国货物；福建商人供应马尼拉贸易；西班牙船队制度连接阿卡普尔科、韦拉克鲁斯和欧洲市场。
+          </p>
+        </div>
+
+        <div class="source-list compact-list">
+          <h3 data-i18n="rou.158">本页参考资料</h3>
+          <ul>
+            <li data-i18n-html="rou.160"><a data-i18n="rou.159" href="https://en.wikipedia.org/wiki/Manila_galleon">Manila galleon</a>：用于马尼拉-阿卡普尔科航线、Urdaneta 返航路线、中国货物和美洲白银。</li>
+            <li data-i18n-html="rou.162"><a data-i18n="rou.161" href="https://en.wikipedia.org/wiki/Spanish_treasure_fleet">Spanish treasure fleet</a>：用于西印度船队、韦拉克鲁斯、卡塔赫纳、波托韦洛、哈瓦那和返航体系。</li>
+            <li data-i18n-html="rou.164"><a data-i18n="rou.163" href="https://en.wikipedia.org/wiki/Casa_de_Contrataci%C3%B3n">Casa de Contratación</a>：用于塞维利亚贸易管理、登记、税收、飞行员和海图制度。</li>
+            <li data-i18n="rou.165">Wikimedia Commons 图片：Reception of the Manila Galleon by the Chamorro in the Ladrones Islands；Galleon-spanish.jpg；Portuguese Carracks off a Rocky Coast；16th century Portuguese Spanish trade routes。</li>
+            <li data-i18n-html="rou.167">Dennis O. Flynn and Arturo Giraldez, “Born with a ‘Silver Spoon’: The Origin of World Trade in 1571,” <em data-i18n="rou.166">Journal of World History</em>, 1995。用于理解马尼拉和全球白银贸易。</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span data-i18n="rou.168">航线网络 · 晚明海上贸易游戏世界观</span>
+      <button data-i18n="rou.169" id="printButton" type="button">导出/打印</button>
+    </footer>
+
+        <script src="./i18n-worldview.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

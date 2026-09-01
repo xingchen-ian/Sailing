@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sailing — 游戏</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="assets/i18n.js"></script>
+  <!-- 离线运行关键：用 importmap 把 'three' 映射到本地 vendor 文件，无需 npm/Vite -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./assets/vendor/three.module.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="game-root">
+    <!-- 语言切换 -->
+    <div class="lang-switcher game-switcher">
+      <button class="lang-switch active" data-lang="zh" data-i18n="lang.zh">中</button>
+      <button class="lang-switch" data-lang="en" data-i18n="lang.en">EN</button>
+    </div>
+
+    <!-- 游戏 canvas 由 SceneManager 注入 -->
+
+    <!-- HUD：统一在左侧，避免遮挡前方场景 -->
+    <div class="hud">
+      <div id="hud-left" class="hud-panel">
+        <a href="rock-editor.html" target="_blank" class="edit-rocks-link" title="自定义 Level 3 礁石布局">✎ 编辑礁石</a>
+        <!-- 换舷提示（短暂出现，不持续遮挡） -->
+        <div id="tack-toast" class="toast hidden"></div>
+        <!-- 禁航区(顶风)警示 -->
+        <div id="no-go-warning" class="no-go hidden"></div>
+
+        <!-- 关卡状态 -->
+        <div class="hud-section">
+          <div class="hud-title" id="level-name">—</div>
+          <div id="level-desc" class="hud-desc">—</div>
+          <div><span class="label" data-i18n="hud.timeLeft">剩余时间</span> <span class="value" id="time-left">—</span></div>
+          <div><span class="label" data-i18n="hud.health">船体</span> <span class="value" id="health">—</span></div>
+        </div>
+
+        <hr />
+
+        <!-- 航行数据 -->
+        <div class="hud-section">
+          <div><span class="label" data-i18n="hud.speed">航速</span> <span class="value" id="speed">0.0</span> kn</div>
+          <div><span class="label" data-i18n="hud.heading">航向</span> <span class="value" id="heading">000</span>°</div>
+          <div><span class="label" data-i18n="hud.windDir">风向</span> <span class="value" id="wind-dir">000</span>°</div>
+          <div><span class="label" data-i18n="hud.windSpeed">风速</span> <span class="value" id="wind-speed">0.0</span> kn</div>
+          <div id="point-of-sail" style="margin-top:4px; color:var(--gold);"></div>
+          <div id="current-info" style="margin-top:2px;"></div>
+        </div>
+
+        <hr />
+
+        <!-- 目标 -->
+        <div class="hud-section">
+          <div><span class="label" data-i18n="hud.target">目标</span> <span class="value" id="target-dist">—</span> m</div>
+          <div><span class="label" data-i18n="hud.bearing">方位</span> <span class="value" id="target-bearing">—</span>°</div>
+          <div id="target-direct" style="font-size:12px;">—</div>
+          <div id="target-reached" style="display:none; color:var(--good); font-size:14px; font-weight:700; margin-top:4px;" data-i18n="hud.reached">目标到达！</div>
+        </div>
+
+        <hr />
+
+        <!-- 帆 / 舵 / 调帆 -->
+        <div class="hud-section">
+          <div><span class="label" data-i18n="hud.sailAngle">帆角</span> <span class="value" id="sail-angle">0</span>°</div>
+          <div><span class="label" data-i18n="hud.rudder">舵角</span> <span class="value" id="rudder-angle">0</span>°</div>
+          <div><span class="label" data-i18n="hud.twa">迎风角</span> <span class="value" id="twa">—</span>°</div>
+          <div><span class="label" data-i18n="hud.trim">调帆</span> <span class="value" id="trim-quality" style="font-size:14px;">—</span></div>
+          <div><span class="label" data-i18n="hud.tack">帆侧</span> <span class="value" id="tack-state">—</span></div>
+        </div>
+
+        <hr />
+
+        <!-- 罗盘 -->
+        <div class="hud-section compass-wrap">
+          <canvas id="compass" width="120" height="120" style="display:block;"></canvas>
+        </div>
+      </div>
+
+      <div id="hud-bottom" class="hud-panel">
+        <span class="label" data-i18n="hud.controls">操作</span>
+        <span class="hint" data-i18n="hud.controlsHint">A/D 转舵（松手自动回正）· W/S 调帆 · Q/E 帆面积 · 空格 回正 · R 重开</span>
+      </div>
+    </div>
+
+    <!-- 设计面板（可调参数，方便调整设计） -->
+    <div id="design-panel">
+      <h4><span data-i18n="dp.title">设计面板</span> <button id="design-collapse" class="btn ghost" style="padding:2px 8px;font-size:11px;" data-i18n="dp.collapse">收起</button></h4>
+      <div id="dp-body"><!-- 由 DesignPanel.js 动态生成 --></div>
+      <div class="dp-actions">
+        <button id="dp-reset" class="btn ghost" data-i18n="dp.reset">重置关卡</button>
+        <button id="dp-apply" class="btn primary" data-i18n="dp.apply">应用</button>
+      </div>
+      <div class="dp-hint" data-i18n="dp.hint">改动即时生效（物理/风/水流）。点“应用”会按当前参数重载本关。</div>
+    </div>
+    <button id="design-toggle" class="btn primary" style="display:none;" data-i18n="dp.toggle">⚙ 设计</button>
+
+    <!-- 关卡选择覆盖层 -->
+    <div id="level-select" class="overlay">
+      <div class="modal">
+        <div class="eyebrow" style="color:var(--accent-2);" data-i18n="levelSelect.eyebrow">First Playable · 选择关卡</div>
+        <h2 data-i18n="levelSelect.title">读懂风，才能航行</h2>
+        <p data-i18n="levelSelect.desc">选一个挑战开始。目标：在限时内抵达绿色浮标，保持船体稳定、避开礁石。</p>
+        <div class="level-grid" id="level-grid"><!-- 由 JS 填充 --></div>
+        <button id="start-btn" class="btn primary" style="width:100%;justify-content:center;" data-i18n="levelSelect.start">开始航行 →</button>
+      </div>
+    </div>
+
+    <!-- 胜利覆盖层 -->
+    <div id="win-overlay" class="overlay hidden">
+      <div class="modal win">
+        <div class="eyebrow" style="color:var(--good);" data-i18n="win.eyebrow">Arrived</div>
+        <h2 data-i18n="win.title">🏁 抵达目标！</h2>
+        <p id="win-detail" data-i18n="win.detail">你读懂了风，把船开到了浮标。</p>
+        <div class="actions" style="display:flex;gap:12px;justify-content:center;">
+          <button id="win-next" class="btn primary" data-i18n="win.next">下一关 →</button>
+          <button id="win-retry" class="btn ghost" data-i18n="win.retry">重玩本关</button>
+          <a href="index.html" class="btn ghost" data-i18n="win.home">返回主页</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 失败覆盖层 -->
+    <div id="lose-overlay" class="overlay hidden">
+      <div class="modal lose">
+        <div class="eyebrow" style="color:var(--bad);" data-i18n="lose.eyebrow">Failed</div>
+        <h2 data-i18n="lose.title">⚓ 任务失败</h2>
+        <p id="lose-detail" data-i18n="lose.detail">时间耗尽或船体受损。</p>
+        <div class="actions" style="display:flex;gap:12px;justify-content:center;">
+          <button id="lose-retry" class="btn primary" data-i18n="lose.retry">再试一次</button>
+          <a href="index.html" class="btn ghost" data-i18n="lose.home">返回主页</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sailing — 开发过程</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="assets/i18n.js"></script>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="brand"><span class="dot"></span> Sailing</div>
+    <div class="links">
+      <a href="index.html" data-i18n="nav.home">首页</a>
+      <a href="index.html#domain" data-i18n="nav.domain">领域知识</a>
+      <a href="index.html#system" data-i18n="nav.system">系统设计</a>
+      <a href="process.html" class="active" data-i18n="nav.process">开发过程</a>
+      <a href="game.html" class="cta" data-i18n="nav.play">▶ 开始游戏</a>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-switch active" data-lang="zh" data-i18n="lang.zh">中</button>
+      <button class="lang-switch" data-lang="en" data-i18n="lang.en">EN</button>
+    </div>
+  </nav>
+
+  <header class="hero wrap">
+    <div class="eyebrow">Development Process</div>
+    <h1 data-i18n="process.title">人机协作开发时间线</h1>
+    <p><span data-i18n="process.subtitle">本项目通过“原始交互日志 + 阶段反思”记录每一次有意义的人机协作。下方为精选手时间线，完整记录见</span> <a href="agent-development-log.md" data-i18n="process.fullLog">agent-development-log.md</a>。</p>
+  </header>
+
+  <section class="section wrap">
+    <div class="timeline">
+
+      <div class="tl-entry">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type raw">Interaction</span><span data-i18n="process.phase0">阶段 0 · 项目初始化</span></div>
+          <h3 data-i18n="process.p0.title">从设计 Brief 出发</h3>
+          <p class="tl-q"><strong data-i18n="process.p0.req">学生请求：</strong><span data-i18n="process.p0.text">基于 <code>development-brief.md</code>（Sailing First Playable Web Game Brief）与系统图，启动一个帆船教学游戏。</span></p>
+          <ul>
+            <li data-i18n="process.p0.l1">确立核心学习转变：新手“指向目标”，专家“读风并调整船/帆/航线”。</li>
+            <li data-i18n="process.p0.l2">确立核心循环：观察 → 判断 → 行动 → 反馈 → 调整。</li>
+            <li data-i18n="process.p0.l3">技术选择：首个可玩原型采用 Three.js + Vite（后于本次重构改为本地离线运行）。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type raw">Interaction</span><span data-i18n="process.phase1">阶段 1 · 可玩原型</span></div>
+          <h3 data-i18n="process.p1.title">3D 航海模拟原型跑通核心循环</h3>
+          <p class="tl-q"><strong data-i18n="process.p1.impl">Agent 实现：</strong><span data-i18n="process.p1.text">搭建场景/海面/天空、帆船模型、风场、帆空气动力、船体动力学、第三人称相机、HUD 与罗盘。</span></p>
+          <ul>
+            <li data-i18n="process.p1.l1">风场（来向+风速，低频漂移）、帆效率曲线、横倾、船体积分。</li>
+            <li data-i18n="process.p1.l2">操作映射：A/D 转舵、W/S 调帆、Q/E 帆面积、空格回正。</li>
+            <li data-i18n="process.p1.l3">HUD 显示航速/航向/风向/帆角/舵角/迎风角/调帆质量；罗盘显示禁航区、目标方位、风来向。</li>
+            <li data-i18n="process.p1.l4">随机目标浮标 + “目标到达”反馈。</li>
+          </ul>
+          <p class="tl-q" style="margin-top:8px;"><strong data-i18n="process.p1.test">测试：</strong><span data-i18n="process.p1.testText">核心循环可在浏览器运行；但缺少关卡、限时、胜负、水流、礁石、展览网站与开发日志。</span></p>
+        </div>
+      </div>
+
+      <div class="tl-entry reflection">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type reflection">Reflection</span><span data-i18n="process.reflection1">覆盖 Interaction 01–02</span></div>
+          <h3 data-i18n="process.r1.title">第一个可玩循环完成</h3>
+          <ul>
+            <li data-i18n="process.r1.l1"><strong>游戏变化：</strong>玩家可转舵调帆、看到风/帆/船的实时反馈。</li>
+            <li data-i18n="process.r1.l2"><strong>AI 帮助：</strong>把“调帆→推力”的效率曲线做得足够陡峭，让调帆好坏有数量级差异。</li>
+            <li data-i18n="process.r1.l3"><strong>设计方向：</strong>原型偏“真实模拟”，与 brief 的“first playable、面向学习”有偏差——缺少明确挑战与胜负。</li>
+            <li data-i18n="process.r1.l4"><strong>与核心转变的关系：</strong>已能体现“调帆影响速度”，但尚未强制玩家“读风选路”。</li>
+          </ul>
+          <div class="pending" data-i18n="process.r1.pending">⏳ 待学生反思：当前游戏是否让你体验到“读风而非指向目标”？哪些 AI 建议被你接受/修改？</div>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type raw">Interaction</span><span data-i18n="process.phase2">阶段 2 · 系统化重构（本次）</span></div>
+          <h3 data-i18n="process.p2.title">面向成果展示的改造</h3>
+          <p class="tl-q"><strong data-i18n="process.p2.req">学生请求：</strong><span data-i18n="process.p2.text">保留 3D 效果，但补齐展览网站、关卡/挑战、胜负、水流/礁石、开发日志；并把数据暴露在 UI 上方便调整设计。</span></p>
+          <ul>
+            <li data-i18n="process.p2.l1">Three.js 本地化（vendoring + importmap），去除 Vite/npm 运行依赖，支持离线静态运行。</li>
+            <li data-i18n="process.p2.l2">新增 <code>index.html</code> 主页、<code>game.html</code> 游戏页、<code>process.html</code> 过程页、<code>styles.css</code> 共享样式。</li>
+            <li data-i18n="process.p2.l3">新增 Level 1–3 关卡预设（横风 / 顶风限时 / 横风限时+礁石）。</li>
+            <li data-i18n="process.p2.l4">新增胜负系统：倒计时、船体血量、Win / Game Over 面板。</li>
+            <li data-i18n="process.p2.l5">新增水流系统（WaterCurrent）与礁石系统（RockField），含碰撞检测。</li>
+            <li data-i18n="process.p2.l6">新增设计面板（DesignPanel），实时暴露并调整风/水流/物理/关卡参数。</li>
+            <li data-i18n="process.p2.l7">补齐 <code>agent-development-log.md</code> 与 <code>submission-manifest.json</code>。</li>
+          </ul>
+          <p class="tl-q" style="margin-top:8px;"><strong data-i18n="process.p2.test">测试：</strong><span data-i18n="process.p2.testText">本地静态服务器联调中；各页面与资源相对路径可达。</span></p>
+        </div>
+      </div>
+
+      <div class="tl-entry reflection">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type reflection">Reflection</span><span data-i18n="process.reflection2">覆盖 Interaction 03</span></div>
+          <h3 data-i18n="process.r2.title">成果展示结构就绪</h3>
+          <ul>
+            <li data-i18n="process.r2.l1"><strong>游戏变化：</strong>从“无限随机浮标”变为“有目标、限时、避障、胜负”的关卡式学习。</li>
+            <li data-i18n="process.r2.l2"><strong>AI 影响：</strong>重构将技术原型推向 brief 要求的提交/展览形态。</li>
+            <li data-i18n="process.r2.l3"><strong>与核心转变的关系：</strong>Level 2（顶风限时）强制玩家走之字形，直接对应“读风而非指向目标”。</li>
+          </ul>
+          <div class="pending" data-i18n="process.r2.pending">⏳ 待学生反思：Level 2/3 的难度是否合适？设计面板暴露的参数是否足够你调整？是否要加入“航迹 vs 计划航线”对比反馈？</div>
+        </div>
+      </div>
+
+    </div>
+
+      <div class="tl-entry">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type raw">Interaction</span><span data-i18n="process.phase3">阶段 3 · UI 打磨与可读性</span></div>
+          <h3 data-i18n="process.p3.title">基于试玩的界面与可读性迭代</h3>
+          <p class="tl-q"><strong data-i18n="process.p3.req">学生请求：</strong><span data-i18n="process.p3.text">用真实系统图替换占位图；全站中英文切换；将 HUD 从右侧移到左侧并整合为单一面板；增强目标浮标可见性；修正罗盘目标标记并补充关卡说明。</span></p>
+          <ul>
+            <li data-i18n="process.p3.l1">系统图改用学生上传的“Sailing - Ian”设计图（Interaction 04）。</li>
+            <li data-i18n="process.p3.l2">新增 assets/i18n.js，全站文本与游戏 HUD/设计面板/胜负层支持中英切换并记忆语言（Interaction 05）。</li>
+            <li data-i18n="process.p3.l3">HUD 整合为左侧单面板（关卡/导航/目标/帆舵/罗盘），不再遮挡场景与设计面板（Interaction 06–07）。</li>
+            <li data-i18n="process.p3.l4">目标浮标增大、改高对比亮色 + 远处 Sprite 标记 + 光柱；罗盘补回绿色目标方位标记（Interaction 08–09）。</li>
+          </ul>
+          <p class="tl-q" style="margin-top:8px;"><strong data-i18n="process.p3.test">测试：</strong><span data-i18n="process.p3.testText">全部 JS 语法检查通过；LevelManager 逻辑测试 12/12；各页面与资源经本地静态服务器返回 200。</span></p>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type raw">Interaction</span><span data-i18n="process.phase3t">阶段 3 · 换舷机制</span></div>
+          <h3 data-i18n="process.p3t.title">自动换舷：帆过风自动翻侧</h3>
+          <p class="tl-q"><strong data-i18n="process.p3t.req">学生决定：</strong><span data-i18n="process.p3t.text">保留 3D 与“读风/调帆”学习，采用方案 A：船穿过风时帆自动翻到背风侧，玩家只需转舵 + 微调。</span></p>
+          <ul>
+            <li data-i18n="process.p3t.l1">sailAngle 仅表示帆松开幅度，所在舷由 TWA 符号 + 15° 死区决定（避免禁航区内抖动误翻）。</li>
+            <li data-i18n="process.p3t.l2">Sailboat 据此镜像渲染帆；HUD 增加“舷 Tack”指示与换舷瞬间提示（视觉 + 轻微音效）。</li>
+          </ul>
+          <p class="tl-q" style="margin-top:8px;"><strong data-i18n="process.p3t.test">测试：</strong><span data-i18n="process.p3t.testText">换舷判定单测 14/14 通过；改文件语法检查通过；各资源 200。</span></p>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type raw">Interaction</span><span data-i18n="process.phase3">阶段 3 · 关卡节奏</span></div>
+          <h3 data-i18n="process.p3r.title">礁石布局：从“岛屿”到“通道门”</h3>
+          <p class="tl-q"><strong data-i18n="process.p3r.req">学生反馈：</strong><span data-i18n="process.p3r.text">Level 3 礁石太大，应挡住帆船与目标之间的通道，但从起点仍能看到目标。</span></p>
+          <ul>
+            <li data-i18n="process.p3r.l1">半径从 22-26 缩小到 10-13，视觉上更像礁石而非岛屿。</li>
+            <li data-i18n="process.p3r.l2">在起点到目标 (0,0) → (0,-600) 的通道上布置 9 块礁石：中心线设第一道门，后续左右交错形成 S 形绕行路线。</li>
+            <li data-i18n="process.p3r.l3">两侧补小礁石压缩通道，但不完全封死；目标浮标的光柱与高度保证从起点可见。</li>
+          </ul>
+          <p class="tl-q" style="margin-top:8px;"><strong data-i18n="process.p3r.test">测试：</strong><span data-i18n="process.p3r.testText">levels.js 语法检查通过；服务器返回 200；等待试玩校准。</span></p>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type raw">Interaction</span><span data-i18n="process.phase3">阶段 3 · 反馈打磨</span></div>
+          <h3 data-i18n="process.p3f.title">换舷视觉反馈：从“听见”到“看见”</h3>
+          <p class="tl-q"><strong data-i18n="process.p3f.req">学生反馈：</strong><span data-i18n="process.p3f.text">触发换舷后响了声，但风帆看起来仍在同一侧。</span></p>
+          <ul>
+            <li data-i18n="process.p3f.l1">Sailboat 加左右舷航行灯：左舷（port）= 红，右舷（starboard）= 绿，提供持续参照。</li>
+            <li data-i18n="process.p3f.l2">换舷时帆做 0.35 秒“甩过中心线再回稳”的动画，而非硬切。</li>
+            <li data-i18n="process.p3f.l3">HUD 舷指示按左红右绿着色，与航行灯一致。</li>
+          </ul>
+          <p class="tl-q" style="margin-top:8px;"><strong data-i18n="process.p3f.test">测试：</strong><span data-i18n="process.p3f.testText">改动文件语法检查通过；本地静态服务器返回 200。</span></p>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type raw">Interaction</span><span data-i18n="process.phase3">阶段 3 · 反馈打磨</span></div>
+          <h3 data-i18n="process.p3ff.title">换舷约定校准：标签与视觉统一</h3>
+          <p class="tl-q"><strong data-i18n="process.p3ff.req">学生反馈：</strong><span data-i18n="process.p3ff.text">TWA +165° 时 UI 显示 Port，但帆仍在右舷，标签与视觉不一致。</span></p>
+          <ul>
+            <li data-i18n="process.p3ff.l1">改为标准航海约定：TWA>0 = Starboard tack（帆在左舷），TWA<0 = Port tack（帆在右舷）。</li>
+            <li data-i18n="process.p3ff.l2">修正 <code>src/main.js</code> 的 sailSide 符号映射与 <code>Sailboat.js</code> 的帆镜像渲染。</li>
+            <li data-i18n="process.p3ff.l3">更新相关注释，确保 HUD 标签、帆的视觉侧、真实航海术语三者一致。</li>
+          </ul>
+          <p class="tl-q" style="margin-top:8px;"><strong data-i18n="process.p3ff.test">测试：</strong><span data-i18n="process.p3ff.testText">改动文件语法检查通过。</span></p>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type raw">Interaction</span><span data-i18n="process.phase3">阶段 3 · 反馈打磨</span></div>
+          <h3 data-i18n="process.p3fff.title">HUD 帆侧：从航海术语到直观位置</h3>
+          <p class="tl-q"><strong data-i18n="process.p3fff.req">学生反馈：</strong><span data-i18n="process.p3fff.text">TWA -26° 时 HUD 显示 Port，但帆仍在船的右侧；希望标签直接对应帆在模型上的位置。</span></p>
+          <ul>
+            <li data-i18n="process.p3fff.l1">HUD 将“舷 Tack”改为“帆侧 / Sail Side”，并按帆的实际位置显示：帆在左舷标“左舷 Port”，帆在右舷标“右舷 Stbd”。</li>
+            <li data-i18n="process.p3fff.l2">保留物理约定：TWA>0 时帆在左舷，TWA<0 时帆在右舷；仅调整文字映射使其与玩家直观一致。</li>
+            <li data-i18n="process.p3fff.l3">换舷提示 toast 同步取反，颜色保持左红右绿，与航行灯一致。</li>
+          </ul>
+          <p class="tl-q" style="margin-top:8px;"><strong data-i18n="process.p3fff.test">测试：</strong><span data-i18n="process.p3fff.testText">改动文件语法检查通过；本地服务器返回 200。</span></p>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type raw">Interaction</span><span data-i18n="process.phase3">阶段 3 · 反馈打磨</span></div>
+          <h3 data-i18n="process.p3ffff.title">帆镜像修正：真正翻到背风侧</h3>
+          <p class="tl-q"><strong data-i18n="process.p3ffff.req">学生反馈：</strong><span data-i18n="process.p3ffff.text">TWA +160° 时帆仍在船右侧（风来的同侧），模型没有反转。</span></p>
+          <ul>
+            <li data-i18n="process.p3ffff.l1">复现：用浏览器截图确认风向 090°/航向 000° 时，帆出现在右舷（风来向同侧），而非左舷（背风侧）。</li>
+            <li data-i18n="process.p3ffff.l2">修正：重新统一 sailSide 语义——sailSide>0 表示帆在左舷（port），sailSide<0 表示帆在右舷（starboard）；TWA>0 时 sailSide=+1，TWA<0 时 sailSide=-1。</li>
+            <li data-i18n="process.p3ffff.l3">修正 <code>Sailboat.js</code> 镜像方向为 <code>sailSide>0 ? π : 0</code>，并把 HUD 的 <code>isPort</code> 判定改回 <code>sailSide > 0</code>。</li>
+          </ul>
+          <p class="tl-q" style="margin-top:8px;"><strong data-i18n="process.p3ffff.test">测试：</strong><span data-i18n="process.p3ffff.testText">node --check 全部通过；浏览器截图验证帆现在位于背风侧（与风来向相反）。</span></p>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type raw">Interaction</span><span data-i18n="process.phase3">阶段 3 · 反馈打磨</span></div>
+          <h3 data-i18n="process.p3fffff.title">换舷可见性再强化：橙色标记 + 冷却机制</h3>
+          <p class="tl-q"><strong data-i18n="process.p3fffff.req">学生反馈：</strong><span data-i18n="process.p3fffff.text">仍旧没有看到模型有反转，希望帆的左右翻侧更明确。</span></p>
+          <ul>
+            <li data-i18n="process.p3fffff.l1">在帆后下角（clew）增加高对比度橙色发光标记球，帆翻侧时标记球从船的一侧明显移到另一侧。</li>
+            <li data-i18n="process.p3fffff.l2">帆材质增加轻微自发光、横桁加粗，让帆在暗光海面更醒目。</li>
+            <li data-i18n="process.p3fffff.l3">自动换舷由“15°死区”改为“0.45s 冷却”：船一旦穿过风帆立即翻到背风侧，避免在风眼前小角度徘徊时帆卡在错误侧。</li>
+          </ul>
+          <p class="tl-q" style="margin-top:8px;"><strong data-i18n="process.p3fffff.test">测试：</strong><span data-i18n="process.p3fffff.testText">node --check 通过；浏览器截图验证风 090° 时帆/标记在左舷，风 270° 时帆/标记在右舷。</span></p>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type raw">Interaction</span><span data-i18n="process.phase3">阶段 3 · 关卡节奏</span></div>
+          <h3 data-i18n="process.p3z.title">Level 2 顶风死锁修复：从“无法前进”到“抢风教学”</h3>
+          <p class="tl-q"><strong data-i18n="process.p3z.req">学生反馈：</strong><span data-i18n="process.p3z.text">Level 2 开局是顶风航向，但船无法前进，调整方向也很慢。</span></p>
+          <ul>
+            <li data-i18n="process.p3z.l1">根因：船初始航向正朝目标（TWA=0°）落在禁航区，推力几乎为零；速度≈0 时 BoatDynamics 的舵效 ∝ speed，导致完全无法转向。</li>
+            <li data-i18n="process.p3z.l2">转向速率加 25% 最低舵效下限，即使无速也能缓慢把船转出顶风区，打破死锁。</li>
+            <li data-i18n="process.p3z.l3">关卡加载时若“朝目标方向”落在禁航区内，初始航向自动偏到抢风角（45°）一侧；Level 2 开局即可获得约 1.5 kn 航速。</li>
+            <li data-i18n="process.p3z.l4">HUD 新增红色禁航区警示，罗盘红弧范围与物理 no-go zone 对齐，提示玩家“转向离开，走之字形靠近目标”。</li>
+          </ul>
+          <p class="tl-q" style="margin-top:8px;"><strong data-i18n="process.p3z.test">测试：</strong><span data-i18n="process.p3z.testText">node --check 全部通过；浏览器截图验证开局能前进、驶入顶风区后警示出现、转向离开后航速恢复。</span></p>
+        </div>
+      </div>
+
+      <div class="tl-entry reflection">
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-type reflection">Reflection</span><span data-i18n="process.reflection3">覆盖 Interaction 04–17</span></div>
+          <h3 data-i18n="process.r3.title">可读性、反馈与关卡节奏到位</h3>
+          <ul>
+            <li data-i18n="process.r3.l1"><strong>游戏变化：</strong>界面不再遮挡场景，目标与罗盘信息清晰可辨，中英观众均可访问；换舷成为可见、可感知的核心动作。</li>
+            <li data-i18n="process.r3.l2"><strong>AI 帮助：</strong>连续多轮根据截图反馈快速迭代 HUD 布局与可读性，并定位“帆永不翻侧”的根因、落地自动换舷。</li>
+            <li data-i18n="process.r3.l3"><strong>与核心转变的关系：</strong>界面清理后玩家注意力回到“读风与航线”，而非被 UI 干扰；自动换舷让 Level 2（顶风限时）的教学成立。</li>
+          </ul>
+          <div class="pending" data-i18n="process.r3.pending">⏳ 待学生反思：当前界面是否足够清晰？自动换舷手感是否自然？是否要加入“航迹 vs 计划航线”对比反馈？</div>
+        </div>
+      </div>
+
+    <p class="muted" style="margin-top:20px;"><span data-i18n="process.fullRecord">完整逐条记录（含失败、调试、决策）见</span> <a href="agent-development-log.md" data-i18n="process.fullLog">agent-development-log.md</a>。</p>
+    <a href="game.html" class="btn primary" style="margin-top:14px;" data-i18n="process.play">▶ 去试玩最新版本</a>
+  </section>
+
+  <footer class="site-foot">
+    <p>Sailing · Development Process · <a href="agent-development-log.md" data-i18n="process.fullLog">原始开发日志</a> · <a href="index.html" data-i18n="footer.home">返回主页</a></p>
+  </footer>
+</body>
+</html>

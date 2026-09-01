@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1050" viewBox="0 0 1500 1050" role="img" aria-labelledby="title desc">
+  <title id="title">How to Trim the Sail on Every Point of Sail</title>
+  <desc id="desc">Wind blows from top to bottom. The diagram shows the no-go zone and sail trim for close-hauled, beam reach, broad reach, and dead run headings.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f1e4}.sea{fill:#e4f1f2;stroke:#bfd4d5;stroke-width:3}.ring{fill:none;stroke:#2b91ad;stroke-width:10;stroke-linecap:round}.no-go{fill:#e8a9b8;fill-opacity:.72;stroke:#d9879b;stroke-width:2}.ink{fill:#1f292d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC",sans-serif}.muted{fill:#667277;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC",sans-serif}.label{fill:#26373d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC",sans-serif;font-weight:700}.small{font-size:18px}.tiny{font-size:15px}.guide{stroke:#aac7c9;stroke-width:2;stroke-dasharray:7 8}.hull{fill:#fffdf8;stroke:#65767c;stroke-width:3}.deck{fill:#dbe6e7;stroke:#8aa0a5;stroke-width:1.5}.mast{fill:#544b42}.sail{stroke:#e28a37;stroke-width:10;stroke-linecap:round}.boom{stroke:#735d48;stroke-width:5;stroke-linecap:round}.wind{stroke:#35a9cf;stroke-width:12;stroke-linecap:round;marker-end:url(#wind-arrow)}.turn{fill:none;stroke:#e6a83a;stroke-width:9;stroke-linecap:round;marker-end:url(#turn-arrow)}.trim{fill:#fffaf0;stroke:#dfc58e;stroke-width:2}.trim-line{stroke:#d7c59f;stroke-width:8;stroke-linecap:round}.trim-fill{stroke:#e28a37;stroke-width:8;stroke-linecap:round}.white{fill:#fff}.outline{paint-order:stroke;stroke:#f7f1e4;stroke-width:8;stroke-linejoin:round}
+    </style>
+    <marker id="wind-arrow" markerWidth="22" markerHeight="22" refX="19" refY="11" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L21 11 L1 21 Z" fill="#35a9cf"/></marker>
+    <marker id="turn-arrow" markerWidth="18" markerHeight="18" refX="16" refY="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L17 9 L1 17 Z" fill="#e6a83a"/></marker>
+    <g id="boat">
+      <path class="hull" d="M0 -62 C25 -49 34 -17 30 25 C27 50 14 66 0 76 C-14 66 -27 50 -30 25 C-34 -17 -25 -49 0 -62 Z"/>
+      <path class="deck" d="M0 -47 C15 -37 21 -12 19 23 C17 38 10 50 0 58 C-10 50 -17 38 -19 23 C-21 -12 -15 -37 0 -47 Z"/>
+      <rect class="mast" x="-5" y="-10" width="10" height="18" rx="3"/>
+    </g>
+  </defs>
+
+  <rect class="bg" width="1500" height="1050"/>
+  <text class="ink" x="70" y="72" font-size="40" font-weight="800">Trim for the Wind: Sheet In or Ease Out?</text>
+  <text class="muted" x="70" y="108" font-size="19">The blue arrow shows where the wind is blowing. Sheet in as the bow turns upwind; ease out as the bow turns downwind.</text>
+
+  <circle class="sea" cx="750" cy="580" r="360"/>
+  <path class="no-go" d="M750 580 L535 292 A360 360 0 0 1 965 292 Z"/>
+  <line class="guide" x1="750" y1="580" x2="390" y2="580"/><line class="guide" x1="750" y1="580" x2="1110" y2="580"/>
+  <line class="guide" x1="750" y1="580" x2="495" y2="835"/><line class="guide" x1="750" y1="580" x2="1005" y2="835"/>
+  <line class="guide" x1="750" y1="580" x2="750" y2="940"/>
+  <path class="ring" d="M510 312 A340 340 0 0 0 750 920"/>
+  <path class="ring" d="M990 312 A340 340 0 0 1 750 920"/>
+
+  <line class="wind" x1="750" y1="135" x2="750" y2="285"/>
+  <text class="label" x="750" y="150" text-anchor="middle" font-size="22">WIND</text>
+  <text class="label outline" x="750" y="390" text-anchor="middle" font-size="26">NO-GO ZONE</text>
+  <text class="muted outline" x="750" y="420" text-anchor="middle" font-size="17">Do not sail directly into the wind</text>
+  <circle cx="750" cy="500" r="48" fill="#d85b50" stroke="#9f4039" stroke-width="2"/>
+  <rect x="711" y="489" width="78" height="22" rx="3" fill="#fff"/>
+
+  <!-- port side boats -->
+  <g transform="translate(525 335) rotate(-42)"><use href="#boat"/><line class="boom" x1="0" y1="0" x2="-7" y2="-47"/><line class="sail" x1="0" y1="0" x2="-7" y2="-47"/></g>
+  <g transform="translate(420 580) rotate(-90)"><use href="#boat"/><line class="boom" x1="0" y1="0" x2="-30" y2="-31"/><line class="sail" x1="0" y1="0" x2="-30" y2="-31"/></g>
+  <g transform="translate(530 815) rotate(-138)"><use href="#boat"/><line class="boom" x1="0" y1="0" x2="-47" y2="-12"/><line class="sail" x1="0" y1="0" x2="-47" y2="-12"/></g>
+  <!-- starboard side boats -->
+  <g transform="translate(975 335) rotate(42)"><use href="#boat"/><line class="boom" x1="0" y1="0" x2="7" y2="-47"/><line class="sail" x1="0" y1="0" x2="7" y2="-47"/></g>
+  <g transform="translate(1080 580) rotate(90)"><use href="#boat"/><line class="boom" x1="0" y1="0" x2="30" y2="-31"/><line class="sail" x1="0" y1="0" x2="30" y2="-31"/></g>
+  <g transform="translate(970 815) rotate(138)"><use href="#boat"/><line class="boom" x1="0" y1="0" x2="47" y2="-12"/><line class="sail" x1="0" y1="0" x2="47" y2="-12"/></g>
+  <g transform="translate(750 895) rotate(180)"><use href="#boat"/><line class="boom" x1="0" y1="0" x2="58" y2="0"/><line class="sail" x1="0" y1="0" x2="58" y2="0"/></g>
+
+  <!-- trim callouts -->
+  <g transform="translate(70 220)"><rect class="trim" width="320" height="132" rx="14"/><text class="label" x="22" y="33" font-size="21">Close-hauled · Sheet in</text><text class="muted small" x="22" y="62">Bow points close to the wind</text><text class="muted small" x="22" y="88">Sail stays close to the centerline</text><line class="trim-line" x1="22" y1="110" x2="280" y2="110"/><line class="trim-fill" x1="22" y1="110" x2="75" y2="110"/><text class="muted tiny" x="285" y="116" text-anchor="end">15°</text></g>
+  <g transform="translate(70 505)"><rect class="trim" width="320" height="132" rx="14"/><text class="label" x="22" y="33" font-size="21">Beam reach · Ease halfway</text><text class="muted small" x="22" y="62">Wind comes across the beam</text><text class="muted small" x="22" y="88">Often the most efficient point of sail</text><line class="trim-line" x1="22" y1="110" x2="280" y2="110"/><line class="trim-fill" x1="22" y1="110" x2="151" y2="110"/><text class="muted tiny" x="285" y="116" text-anchor="end">45°</text></g>
+  <g transform="translate(1110 220)"><rect class="trim" width="320" height="132" rx="14"/><text class="label" x="22" y="33" font-size="21">Tacking</text><text class="muted small" x="22" y="62">Bow passes through the wind</text><text class="muted tiny" x="22" y="88">Sail crosses over to the other side</text><path class="turn" d="M225 112 C260 90 270 55 250 35"/></g>
+  <g transform="translate(1110 505)"><rect class="trim" width="320" height="132" rx="14"/><text class="label" x="22" y="33" font-size="21">Broad reach · Ease well out</text><text class="muted small" x="22" y="62">Wind comes over the aft quarter</text><text class="muted tiny" x="22" y="88">Let the sail open farther from the boat</text><line class="trim-line" x1="22" y1="110" x2="280" y2="110"/><line class="trim-fill" x1="22" y1="110" x2="221" y2="110"/><text class="muted tiny" x="285" y="116" text-anchor="end">70°</text></g>
+
+  <g transform="translate(565 950)"><rect class="trim" width="370" height="76" rx="14"/><text class="label" x="185" y="30" text-anchor="middle" font-size="21">Dead run · Ease almost fully out</text><text class="muted small" x="185" y="57" text-anchor="middle">Wind over the stern; sail angle about 80–90°</text></g>
+
+  <path class="turn" d="M535 275 C590 215 665 190 720 206"/><text class="label" x="535" y="195" font-size="18">Bow through the wind: tack</text>
+  <path class="turn" d="M630 916 C670 952 718 959 742 940"/><text class="label" x="370" y="925" font-size="18">Stern through the wind: gybe</text>
+
+  <text class="label outline" x="445" y="690" text-anchor="middle" font-size="20">Wind on port side</text>
+  <text class="label outline" x="1055" y="690" text-anchor="middle" font-size="20">Wind on starboard side</text>
+</svg>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Low-Poly 帆船模型预览</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #bfe3f0; font-family: system-ui, sans-serif; }
+    #hud {
+      position: fixed; left: 16px; top: 14px; z-index: 10; color: #1c3a4b;
+      background: rgba(255,255,255,.6); padding: 10px 14px; border-radius: 10px;
+      font-size: 13px; line-height: 1.5; backdrop-filter: blur(4px);
+    }
+    #hud b { color: #0b2a3a; }
+    .row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+    input[type=range] { width: 150px; }
+  </style>
+  <!-- 离线运行：importmap 把 'three' 指向本地 vendor 文件 -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./assets/vendor/three.module.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="hud">
+    <div><b>Low-Poly 帆船船体预览</b></div>
+    <div>拖拽旋转视角 · 滚轮缩放</div>
+    <div class="row">吃风角 <input id="sail" type="range" min="0" max="90" value="28"> <span id="sailv">28°</span></div>
+    <div class="row">侧倾 <input id="heel" type="range" min="-20" max="20" value="8"> <span id="heelv">8°</span></div>
+    <div class="row">自动旋转 <input id="spin" type="checkbox" checked></div>
+  </div>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { Sailboat } from './src/boat/Sailboat.js';
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    document.body.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xbfe3f0);
+    scene.fog = new THREE.Fog(0xbfe3f0, 18, 40);
+
+    const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 100);
+    camera.position.set(6.5, 4.0, 8.0);
+
+    // 简易轨道控制（不依赖 addon，离线可用）
+    const target = new THREE.Vector3(0, 0.4, 0);
+    let theta = Math.atan2(camera.position.x - target.x, camera.position.z - target.z);
+    let phi = Math.acos((camera.position.y - target.y) / camera.position.distanceTo(target));
+    let radius = camera.position.distanceTo(target);
+    let dragging = false, px = 0, py = 0;
+    renderer.domElement.addEventListener('pointerdown', e => { dragging = true; px = e.clientX; py = e.clientY; });
+    addEventListener('pointerup', () => dragging = false);
+    addEventListener('pointermove', e => {
+      if (!dragging) return;
+      theta -= (e.clientX - px) * 0.008; phi -= (e.clientY - py) * 0.008;
+      phi = Math.max(0.15, Math.min(1.45, phi)); px = e.clientX; py = e.clientY;
+    });
+    addEventListener('wheel', e => { radius = Math.max(4, Math.min(22, radius + e.deltaY * 0.01)); }, { passive: true });
+
+    // 灯光
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x4a6b7a, 0.9));
+    const sun = new THREE.DirectionalLight(0xfff2d8, 1.1);
+    sun.position.set(6, 10, 4);
+    sun.castShadow = true;
+    sun.shadow.mapSize.set(1024, 1024);
+    sun.shadow.camera.left = -8; sun.shadow.camera.right = 8;
+    sun.shadow.camera.top = 8; sun.shadow.camera.bottom = -8;
+    scene.add(sun);
+
+    // 水面
+    const water = new THREE.Mesh(
+      new THREE.PlaneGeometry(60, 60),
+      new THREE.MeshStandardMaterial({ color: 0x2a6f97, roughness: 0.35, metalness: 0.1 })
+    );
+    water.rotation.x = -Math.PI / 2;
+    water.receiveShadow = true;
+    scene.add(water);
+
+    // 船
+    const boat = new Sailboat();
+    const pivot = new THREE.Group();
+    pivot.add(boat.group);
+    scene.add(pivot);
+
+    // UI
+    const sailEl = document.getElementById('sail');
+    const heelEl = document.getElementById('heel');
+    const spinEl = document.getElementById('spin');
+    const sailV = document.getElementById('sailv');
+    const heelV = document.getElementById('heelv');
+    sailEl.oninput = () => sailV.textContent = sailEl.value + '°';
+    heelEl.oninput = () => heelV.textContent = heelEl.value + '°';
+
+    function applyState() {
+      boat.update({
+        position: { x: 0, z: 0 },
+        heading: 0,
+        sailAngle: +sailEl.value,
+        sailSide: 1,
+        rudderAngle: 0,
+        heel: +heelEl.value,
+        waveY: 0,
+        windDir: 90,
+        dt: 0.016,
+      });
+    }
+
+    let spinAngle = 0;
+    function animate() {
+      requestAnimationFrame(animate);
+      camera.position.set(
+        target.x + radius * Math.sin(phi) * Math.sin(theta),
+        target.y + radius * Math.cos(phi),
+        target.z + radius * Math.sin(phi) * Math.cos(theta)
+      );
+      camera.lookAt(target);
+      if (spinEl.checked) { spinAngle += 0.005; pivot.rotation.y = spinAngle; }
+      applyState();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    addEventListener('resize', () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
+  </script>
+</body>
+</html>

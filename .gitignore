@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+.vite/
+
+# local agent project data (not part of the game)
+.workbuddy/

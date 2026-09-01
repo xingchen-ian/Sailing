@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="gam.001">玩法设计 · 晚明海上贸易游戏世界观</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a data-i18n="gam.002" href="../index.html" style="display:inline-block;margin:12px 16px 0;font-size:14px;color:#b3842f;text-decoration:none;font-weight:600;">← 返回帆船游戏主站（Sailing）</a>
+    <header class="topbar">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <p data-i18n="gam.003" class="eyebrow">原型玩法 · 风帆驾驶</p>
+          <h1 data-i18n="gam.004">玩法设计</h1>
+        </div>
+      </a>
+      <nav class="nav" aria-label="页面章节">
+        <a data-i18n="gam.005" href="./index.html">世界观首页</a>
+        <a data-i18n="gam.006" href="./geography.html">地理资料库</a>
+        <a data-i18n="gam.007" href="./routes.html">航线网络</a>
+        <a data-i18n="gam.008" href="./ships.html">中式帆船</a>
+        <a data-i18n="gam.009" href="#sailing-prototype">驾驶原型</a>
+        <a data-i18n="gam.010" href="#challenge-set">挑战组</a>
+        <a data-i18n="gam.011" href="#progression">推进顺序</a>
+            <div class="lang-switcher">
+        <button type="button" class="lang-switch active" data-lang="zh">中</button>
+        <button type="button" class="lang-switch" data-lang="en">EN</button>
+      </div>
+    </nav>
+    </header>
+
+    <main>
+      <section class="subpage-hero gameplay-hero">
+        <div class="subpage-title">
+          <p data-i18n="gam.012" class="kicker">游戏玩法设计</p>
+          <h2 data-i18n="gam.013">先把风帆驾驶做成一组可学习、可失败、可精进的海上挑战。</h2>
+          <p data-i18n="gam.014">
+            当前原型采用中等模式：玩家控制船舵和帆角，帆面积暂时固定。第一批任务不急着加入贸易、战斗和复杂船队，而是先验证玩家是否能读懂风向、选择航线、提前减速，并在空间压力下完成航行目标。
+          </p>
+        </div>
+        <div class="subpage-panel">
+          <h3 data-i18n="gam.015">当前玩法边界</h3>
+          <ul>
+            <li data-i18n="gam.016">玩家控制：转向、收帆、放帆。</li>
+            <li data-i18n="gam.017">核心反馈：航速、抖帆、风向、目标区。</li>
+            <li data-i18n="gam.018">暂不加入：帆面积、复杂天气、船员管理、炮战。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="sailing-prototype" class="section-band">
+        <div class="section-heading">
+          <p data-i18n="gam.019" class="kicker">中等模式基础</p>
+          <h2 data-i18n="gam.020">挑战应该围绕“看风、调帆、选路线”展开。</h2>
+        </div>
+        <div class="mechanic-grid prototype-grid">
+          <article>
+            <h3 data-i18n="gam.021">风向判断</h3>
+            <p data-i18n="gam.022">玩家需要理解船头与来风夹角。顶风会失速，横风效率最高，顺风稳定但未必最快。</p>
+          </article>
+          <article>
+            <h3 data-i18n="gam.023">帆角操作</h3>
+            <p data-i18n="gam.024">收帆是把帆拉近船身，放帆是让帆向外打开。帆角错误会让帆抖动、航速下降。</p>
+          </article>
+          <article>
+            <h3 data-i18n="gam.025">航线选择</h3>
+            <p data-i18n="gam.026">目标在上风时不能直线冲过去，玩家要通过之字形抢风航行接近目标。</p>
+          </article>
+          <article>
+            <h3 data-i18n="gam.027">提前量</h3>
+            <p data-i18n="gam.028">船不是即时停下的载具。入港、绕标和窄水道任务都要考验提前转向和减速。</p>
+          </article>
+        </div>
+        <figure class="diagram-figure">
+          <img src="./assets/wind-sail-force-diagram.svg" alt="不同风角和帆角下，船获得向前力量大小变化的教学图" />
+          <figcaption data-i18n="gam.029">
+            这张图用于解释中等模式的简化规则：风角决定可用风力，帆角越接近最佳线，船获得的前向力量越大。
+          </figcaption>
+        </figure>
+        <figure class="diagram-figure">
+          <img src="./assets/sail-trim-points-of-sail.svg" alt="来风方向固定时，迎风、横风、斜顺风和正顺风航行对应的调帆方法" />
+          <figcaption data-i18n="gam.030">
+            调帆的核心规则：船头越靠近来风，帆越要收紧；船头越转向下风，帆越要放开。穿过上风方向是换舷，穿过下风方向是顺风转向。
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="challenge-set" class="section-band alt">
+        <div class="section-heading">
+          <p data-i18n="gam.031" class="kicker">第一批挑战</p>
+          <h2 data-i18n="gam.032">七个练习从顺风起步，逐步过渡到路线规划和空间压力。</h2>
+        </div>
+        <div class="challenge-grid">
+          <article class="challenge-card">
+            <div data-i18n="gam.033" class="challenge-number">01</div>
+            <span data-i18n="gam.034" class="tag inference">入门驾驶</span>
+            <h3 data-i18n="gam.035">顺风起航</h3>
+            <p data-i18n="gam.036">
+              玩家从静止状态出发，目标在顺风方向。第一关只要求看懂风线，放开帆，让船稳定驶向红旗。
+            </p>
+            <dl>
+              <dt data-i18n="gam.037">玩家动作</dt>
+              <dd data-i18n="gam.038">保持船头朝向目标，放帆到接近最佳角度，观察船速提升。</dd>
+              <dt data-i18n="gam.039">成功条件</dt>
+              <dd data-i18n="gam.040">抵达红旗目标圈。</dd>
+              <dt data-i18n="gam.041">可评分项</dt>
+              <dd data-i18n="gam.042">用时、平均帆角误差、抖帆时间。</dd>
+            </dl>
+          </article>
+
+          <article class="challenge-card">
+            <div data-i18n="gam.043" class="challenge-number">02</div>
+            <span data-i18n="gam.044" class="tag inference">减速意识</span>
+            <h3 data-i18n="gam.045">顺风入港</h3>
+            <p data-i18n="gam.046">
+              玩家顺风靠近港口。顺风容易加速，但入港必须提前减速，否则高速进入停泊圈会失败。
+            </p>
+            <dl>
+              <dt data-i18n="gam.047">玩家动作</dt>
+              <dd data-i18n="gam.048">接近港口前收帆或改变航向，让船低速滑入目标区。</dd>
+              <dt data-i18n="gam.049">成功条件</dt>
+              <dd data-i18n="gam.050">在指定区域内低速保持一小段时间。</dd>
+              <dt data-i18n="gam.051">可评分项</dt>
+              <dd data-i18n="gam.052">最终速度、停靠精度、越界次数、提前减速距离。</dd>
+            </dl>
+          </article>
+
+          <article class="challenge-card">
+            <div data-i18n="gam.053" class="challenge-number">03</div>
+            <span data-i18n="gam.054" class="tag inference">稳定航向</span>
+            <h3 data-i18n="gam.055">侧风直航</h3>
+            <p data-i18n="gam.056">
+              目标仍在屏幕上方，但风从侧面吹来。玩家要理解横风效率高，同时保持船头不被转向操作带偏。
+            </p>
+            <dl>
+              <dt data-i18n="gam.057">玩家动作</dt>
+              <dd data-i18n="gam.058">把帆调到适合侧风的位置，少量修舵保持直线。</dd>
+              <dt data-i18n="gam.059">成功条件</dt>
+              <dd data-i18n="gam.060">抵达目标圈，且航线偏离不宜过大。</dd>
+              <dt data-i18n="gam.061">可评分项</dt>
+              <dd data-i18n="gam.062">平均速度、航线偏差、帆角稳定度。</dd>
+            </dl>
+          </article>
+
+          <article class="challenge-card">
+            <div data-i18n="gam.063" class="challenge-number">04</div>
+            <span data-i18n="gam.064" class="tag inference">换舷训练</span>
+            <h3 data-i18n="gam.065">换舷转向</h3>
+            <p data-i18n="gam.066">
+              路线由多个左右交错的检查点组成。玩家每次改变航向后，都要重新判断风在船的哪一侧。
+            </p>
+            <dl>
+              <dt data-i18n="gam.067">玩家动作</dt>
+              <dd data-i18n="gam.068">通过检查点后转向、换舷，并在新航向上重新调帆。</dd>
+              <dt data-i18n="gam.069">成功条件</dt>
+              <dd data-i18n="gam.070">按顺序穿过全部检查点。</dd>
+              <dt data-i18n="gam.071">可评分项</dt>
+              <dd data-i18n="gam.072">换舷次数、换舷后恢复速度、抖帆时间。</dd>
+            </dl>
+          </article>
+
+          <article class="challenge-card">
+            <div data-i18n="gam.073" class="challenge-number">05</div>
+            <span data-i18n="gam.074" class="tag inference">操控训练</span>
+            <h3 data-i18n="gam.075">横风绕标</h3>
+            <p data-i18n="gam.076">
+              海面上放置一组浮标，玩家按顺序绕行。每次转向后，最佳帆角都会变化。
+            </p>
+            <dl>
+              <dt data-i18n="gam.077">玩家动作</dt>
+              <dd data-i18n="gam.078">在转弯前预判航向变化，及时收帆或放帆。</dd>
+              <dt data-i18n="gam.079">成功条件</dt>
+              <dd data-i18n="gam.080">按顺序绕过所有浮标，不漏标、不撞标。</dd>
+              <dt data-i18n="gam.081">可评分项</dt>
+              <dd data-i18n="gam.082">平均航速、转弯半径、路线贴合度、帆角调整次数。</dd>
+            </dl>
+          </article>
+
+          <article class="challenge-card">
+            <div data-i18n="gam.083" class="challenge-number">06</div>
+            <span data-i18n="gam.084" class="tag inference">路线规划</span>
+            <h3 data-i18n="gam.085">逆风抵达</h3>
+            <p data-i18n="gam.086">
+              目标点在来风方向。玩家不能直线顶风过去，必须左右换舷，用之字形航线逐渐接近目标。
+            </p>
+            <dl>
+              <dt data-i18n="gam.087">玩家动作</dt>
+              <dd data-i18n="gam.088">避开顶风禁航区，在来风左右两侧保持可推进角度。</dd>
+              <dt data-i18n="gam.089">成功条件</dt>
+              <dd data-i18n="gam.090">抵达目标圈，且不要长时间进入禁航状态。</dd>
+              <dt data-i18n="gam.091">可评分项</dt>
+              <dd data-i18n="gam.092">用时、航程长度、换舷次数、进入禁航区次数。</dd>
+            </dl>
+          </article>
+
+          <article class="challenge-card major">
+            <div data-i18n="gam.093" class="challenge-number">07</div>
+            <span data-i18n="gam.094" class="tag inference">空间压力</span>
+            <h3 data-i18n="gam.095">窄水道穿越</h3>
+            <p data-i18n="gam.096">
+              航线两侧布置浅滩、礁石或港口木桩。玩家要在有限空间里控制速度、转向和帆角，是前面能力的组合考核。
+            </p>
+            <dl>
+              <dt data-i18n="gam.097">玩家动作</dt>
+              <dd data-i18n="gam.098">在狭窄水域选择安全航角，必要时牺牲速度换取转向余量。</dd>
+              <dt data-i18n="gam.099">成功条件</dt>
+              <dd data-i18n="gam.100">穿过水道并保持船体完整，没有搁浅或严重碰撞。</dd>
+              <dt data-i18n="gam.101">可评分项</dt>
+              <dd data-i18n="gam.102">最小安全距离、碰撞伤害、通过时间、帆角调整次数。</dd>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section id="progression" class="section-band">
+        <div class="section-heading">
+          <p data-i18n="gam.103" class="kicker">推荐推进顺序</p>
+          <h2 data-i18n="gam.104">先单点训练，再把能力组合成任务。</h2>
+        </div>
+        <div class="city-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-i18n="gam.105">阶段</th>
+                <th data-i18n="gam.106">挑战</th>
+                <th data-i18n="gam.107">玩家应学会的能力</th>
+                <th data-i18n="gam.108">后续可扩展机制</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="gam.109">1</td>
+                <td data-i18n="gam.110">顺风起航</td>
+                <td data-i18n="gam.111">理解风线方向、放帆和基础推进。</td>
+                <td data-i18n="gam.112">新手教学、基础航速评分。</td>
+              </tr>
+              <tr>
+                <td data-i18n="gam.113">2</td>
+                <td data-i18n="gam.114">顺风入港</td>
+                <td data-i18n="gam.115">提前减速，处理惯性和停靠精度。</td>
+                <td data-i18n="gam.116">码头停靠、装卸、港口罚款。</td>
+              </tr>
+              <tr>
+                <td data-i18n="gam.117">3</td>
+                <td data-i18n="gam.118">侧风直航</td>
+                <td data-i18n="gam.119">利用横风效率，保持稳定航向。</td>
+                <td data-i18n="gam.120">长距离航线、侧风速度奖励。</td>
+              </tr>
+              <tr>
+                <td data-i18n="gam.121">4</td>
+                <td data-i18n="gam.122">换舷转向</td>
+                <td data-i18n="gam.123">转向后重新判断来风侧，并快速恢复速度。</td>
+                <td data-i18n="gam.124">抢风航行、路线考试。</td>
+              </tr>
+              <tr>
+                <td data-i18n="gam.125">5</td>
+                <td data-i18n="gam.126">横风绕标</td>
+                <td data-i18n="gam.127">在连续转向中保持帆角和速度。</td>
+                <td data-i18n="gam.128">竞速、训练场、港口考试。</td>
+              </tr>
+              <tr>
+                <td data-i18n="gam.129">6</td>
+                <td data-i18n="gam.130">逆风抵达</td>
+                <td data-i18n="gam.131">理解禁航区、抢风航行和之字形路线。</td>
+                <td data-i18n="gam.132">不同船型的逆风能力。</td>
+              </tr>
+              <tr>
+                <td data-i18n="gam.133">7</td>
+                <td data-i18n="gam.134">窄水道穿越</td>
+                <td data-i18n="gam.135">在空间压力下组合转向、减速和调帆。</td>
+                <td data-i18n="gam.136">礁石、浅滩、航道封锁。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span data-i18n="gam.137">玩法设计 · 风帆驾驶原型</span>
+      <button data-i18n="gam.138" id="printButton" type="button">导出/打印</button>
+    </footer>
+
+        <script src="./i18n-worldview.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

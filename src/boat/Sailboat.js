@@ -2,10 +2,15 @@ import * as THREE from 'three';
 import { GLTFLoader } from '../../assets/vendor/GLTFLoader.js';
 import { DEG2RAD, normalizeDeg } from '../utils/math.js';
 
-// GLB 船身配置：路径、非均匀缩放（匹配现有帆船 rig 尺寸）、位置
-const HULL_GLTF_PATH = '../../assets/3d/boat_hull_lowpoly_compressed.glb';
-const HULL_SCALE = new THREE.Vector3(0.761, 1.76, 2.658);
-const HULL_POSITION = new THREE.Vector3(0, 0.162, 0);
+// GLB 船身配置：路径、绕 Y 轴旋转（让模型 X 轴 = 船长 → 世界 -Z = 船头）、
+// 非均匀缩放（匹配现有帆船 rig 尺寸）、位置。
+// wooden_hull.glb 由 Tripo 生成，原坐标系：X ∈ [-0.5, 0.5] 船长 1.0，
+// Y ∈ [0, 0.3317] 高 0.3317（原点 = 船底），Z ∈ [-0.1754, 0.1754] 宽 0.351。
+// 旋转后：模型 X（船长）→ 世界 -Z（船头）；模型 Z（宽）→ 世界 X；模型 Y（高）→ 世界 Y。
+const HULL_GLTF_PATH = '../../assets/3d/wooden_hull.glb';
+const HULL_ROT_Y = -Math.PI / 2;             // -90° 让船头朝 -Z（游戏船头方向）
+const HULL_SCALE = new THREE.Vector3(5.000, 3.480, 4.000);  // 长 5.00 / 高 1.15 / 宽 1.40
+const HULL_POSITION = new THREE.Vector3(0, 0.05, 0);        // 船底略高于水线，避免沉没感
 
 /**
  * Sailboat —— 极简几何体帆船（占位模型）
@@ -231,10 +236,13 @@ export class Sailboat {
       const model = gltf.scene;
       model.scale.copy(HULL_SCALE);
       model.position.copy(HULL_POSITION);
+      model.rotation.y = HULL_ROT_Y;
       model.traverse((o) => {
         if (o.isMesh) {
           o.castShadow = true;
           o.receiveShadow = true;
+          // wooden_hull.glb 自带 basecolor JPEG（bufferView 内嵌），
+          // 输出颜色空间已正确标注；若发现偏暗可手动 o.material.needsUpdate = true。
         }
       });
 

@@ -10,7 +10,7 @@ import { DEG2RAD, normalizeDeg } from '../utils/math.js';
 const HULL_GLTF_PATH = '../../assets/3d/wooden_hull.glb';
 const HULL_ROT_Y = -Math.PI / 2;             // -90° 让船头朝 -Z（游戏船头方向）
 const HULL_SCALE = new THREE.Vector3(5.000, 3.480, 4.000);  // 长 5.00 / 高 1.15 / 宽 1.40
-const HULL_POSITION = new THREE.Vector3(0, 0.05, 0);        // 船底略高于水线，避免沉没感
+const HULL_POSITION = new THREE.Vector3(0, -0.30, 0);       // 船身吃水 ~0.35m，让浪花包裹船舷；hullGroup.position.y=0.05 另加 0.05
 
 /**
  * Sailboat —— 极简几何体帆船（占位模型）

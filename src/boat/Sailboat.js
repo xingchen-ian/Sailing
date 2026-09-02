@@ -105,9 +105,10 @@ export class Sailboat {
     const rudderGeo = new THREE.BoxGeometry(0.05, 1.0, 0.6);
     this.rudder = new THREE.Mesh(rudderGeo, rudderMat);
     this.rudderPivot = new THREE.Group();
-    this.rudderPivot.position.set(0, 0.2, 2.4);
+    // z=2.6 推到船尾外（GLB 船身 zmax=2.5），y=0.0 让舵叶 [-0.8, 0.2] 露出船底 0.5m
+    this.rudderPivot.position.set(0, 0.0, 2.6);
     this.rudderPivot.add(this.rudder);
-    this.rudder.position.y = -0.2;
+    this.rudder.position.y = -0.3;  // 舵叶中心下移到 y=-0.3（= 船底），blade 全部在水线下方
     this.group.add(this.rudderPivot);
 
     // ===== 桅顶风向标（Wind Indicator）=====

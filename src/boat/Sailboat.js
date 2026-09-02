@@ -7,7 +7,9 @@ import { DEG2RAD, normalizeDeg } from '../utils/math.js';
 // wooden_hull.glb 由 Tripo 生成，原坐标系：X ∈ [-0.5, 0.5] 船长 1.0，
 // Y ∈ [0, 0.3317] 高 0.3317（原点 = 船底），Z ∈ [-0.1754, 0.1754] 宽 0.351。
 // 旋转后：模型 X（船长）→ 世界 -Z（船头）；模型 Z（宽）→ 世界 X；模型 Y（高）→ 世界 Y。
-const HULL_GLTF_PATH = '../../assets/3d/wooden_hull.glb';
+// 用 import.meta.url 解析：FileLoader.fetch() 默认按页面 URL 解析，'../../' 会回退到
+// GitHub Pages 用户站点（xingchen-ian.github.io）而非项目站点（/Sailing/），导致 404
+const HULL_GLTF_PATH = new URL('../../assets/3d/wooden_hull.glb', import.meta.url).href;
 const HULL_ROT_Y = -Math.PI / 2;             // -90° 让船头朝 -Z（游戏船头方向）
 const HULL_SCALE = new THREE.Vector3(5.000, 3.480, 4.000);  // 长 5.00 / 高 1.15 / 宽 1.40
 const HULL_POSITION = new THREE.Vector3(0, -0.30, 0);       // 船身吃水 ~0.35m，让浪花包裹船舷；hullGroup.position.y=0.05 另加 0.05
